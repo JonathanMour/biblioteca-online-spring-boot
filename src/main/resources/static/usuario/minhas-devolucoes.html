@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Minhas Devoluções - Biblioteca</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- MENU LATERAL -->
+    <aside class="menu-usuario">
+      <div class="logo-usuario">
+        <h1>📖 Biblioteca</h1>
+        <span>ONLINE</span>
+      </div>
+
+      <nav class="menu-links-usuario">
+        <a href="usuario.html"> 🏠 Início </a>
+
+        <a href="/usuario/livros"> 📖 Livros </a>
+
+        <a href="meus-emprestimos.html"> 📋 Meus Empréstimos </a>
+
+        <a href="minhas-devolucoes.html" class="ativo">
+          ↪ Minhas Devoluções
+        </a>
+
+        <a href="meu-perfil.html"> 👤 Meu Perfil </a>
+      </nav>
+
+      <div class="rodape-usuario">
+        <div class="dados-usuario">
+          <div class="avatar-usuario">
+            <img
+              id="fotoUsuarioMenu"
+              alt="Foto do usuário"
+              style="display: none"
+            />
+
+            <span id="iconeUsuarioMenu">👤</span>
+          </div>
+
+          <div>
+            <strong id="nomeUsuarioMenu">Usuário</strong>
+
+            <span id="emailUsuarioMenu">
+              usuario@email.com
+            </span>
+          </div>
+        </div>
+          <form action="/logout" method="post" class="form-logout">
+              <button type="submit" class="sair-usuario">
+                  🚪 Sair
+              </button>
+          </form>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="painel-usuario">
+
+      <!-- TOPO -->
+      <header class="topo-usuario">
+        <div class="titulo-usuario"></div>
+
+        <div class="usuario-topo">
+          <button type="button" class="botao-notificacao">
+            🔔
+          </button>
+        </div>
+      </header>
+
+      <!-- BANNER -->
+      <section class="banner-usuario">
+        <div class="banner-conteudo-usuario">
+          <div class="icone-boas-vindas">
+            ↪
+          </div>
+
+          <div>
+            <h1>Minhas Devoluções</h1>
+
+            <p>
+              Acompanhe os livros devolvidos e consulte seu histórico.
+            </p>
+          </div>
+        </div>
+
+        <div class="desenho-banner">
+          📚
+        </div>
+      </section>
+
+      <!-- CARDS -->
+      <section class="cards-usuario">
+
+        <!-- DEVOLUÇÕES REALIZADAS -->
+        <article class="card-usuario verde">
+          <div class="icone-card-usuario">
+            ✓
+          </div>
+
+          <div>
+            <strong id="totalDevolucoesRealizadas">
+              0
+            </strong>
+
+            <span>
+              Devoluções Realizadas
+            </span>
+          </div>
+        </article>
+
+        <!-- EMPRÉSTIMOS ATIVOS -->
+        <article class="card-usuario azul">
+          <div class="icone-card-usuario">
+            📖
+          </div>
+
+          <div>
+            <strong id="totalDevolucoesAtivas">
+              0
+            </strong>
+
+            <span>
+              Empréstimos Ativos
+            </span>
+
+            <a href="meus-emprestimos.html">
+              Ver empréstimos →
+            </a>
+          </div>
+        </article>
+
+        <!-- ATRASADOS -->
+        <article class="card-usuario laranja">
+          <div class="icone-card-usuario">
+            ⚠️
+          </div>
+
+          <div>
+            <strong id="totalDevolucoesAtrasadas">
+              0
+            </strong>
+
+            <span>
+              Devoluções Atrasadas
+            </span>
+          </div>
+        </article>
+
+        <!-- TOTAL -->
+        <article class="card-usuario roxo">
+          <div class="icone-card-usuario">
+            📋
+          </div>
+
+          <div>
+            <strong id="totalHistoricoDevolucoes">
+              0
+            </strong>
+
+            <span>
+              Total de Empréstimos
+            </span>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- ÁREA DE DEVOLUÇÕES -->
+      <section
+        class="caixa-usuario"
+        id="devolucoes"
+        style="margin: 0 30px 30px"
+      >
+
+        <!-- CABEÇALHO -->
+        <div class="topo-meus-emprestimos">
+          <div>
+            <h2>
+              Histórico de Devoluções
+            </h2>
+
+            <p>
+              Consulte todos os livros que você já devolveu.
+            </p>
+          </div>
+
+          <!-- PESQUISA -->
+          <div class="pesquisa-emprestimos">
+            <input
+              type="text"
+              id="pesquisaDevolucao"
+              placeholder="Pesquisar por título ou autor..."
+            />
+          </div>
+        </div>
+
+        <!-- ABAS -->
+        <div class="abas-emprestimos">
+          <button
+            type="button"
+            class="aba-emprestimo ativa"
+            id="abaDevolvidos"
+          >
+            Devolvidos
+          </button>
+
+          <button
+            type="button"
+            class="aba-emprestimo"
+            id="abaTodasDevolucoes"
+          >
+            Todos
+          </button>
+        </div>
+
+        <!-- TABELA -->
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Livro</th>
+                <th>Autor</th>
+                <th>Data do Empréstimo</th>
+                <th>Data Prevista</th>
+                <th>Data da Devolução</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="corpoTabelaDevolucoes">
+              <!-- preenchido pelo JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PAGINAÇÃO -->
+        <div class="rodape-tabela">
+          <p id="textoPaginacaoDevolucoes">
+            Mostrando 0 devoluções
+          </p>
+
+          <div
+            class="paginacao"
+            id="paginacaoDevolucoes"
+          >
+            <!-- criado pelo JavaScript -->
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

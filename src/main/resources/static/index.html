@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    />
+    <title>Biblioteca Online</title>
+    <!-- ÍCONE DA ABA -->
+    <link
+            rel="icon"
+            type="image/png"
+            href="/img/icon.png"
+    />
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    />
+</head>
+<body class="pagina-home-publica">
+
+<!-- TOPO-->
+
+<header class="home-topo">
+
+    <!-- LOGO -->
+    <a
+            href="/"
+            class="home-logo"
+    >
+        <span class="home-logo-icone">
+          📖
+        </span>
+
+        <strong>
+            Biblioteca Online
+        </strong>
+
+    </a>
+
+    <!-- MENU -->
+    <nav class="home-menu">
+        <a
+                href="/"
+                class="ativo"
+        >
+            Início
+        </a>
+
+        <a href="#livros">
+            Livros
+        </a>
+
+    </nav>
+
+    <!-- AÇÕES -->
+
+    <div class="home-acoes">
+        <!-- PESQUISA DO TOPO -->
+
+        <div class="home-pesquisa-topo">
+
+            <input
+                    type="text"
+                    id="pesquisaTopoPublica"
+                    placeholder="Pesquisar livros..."
+            />
+            <span>
+            🔍
+          </span>
+        </div>
+
+        <!-- LOGIN -->
+
+        <a
+                href="/login"
+                class="home-entrar"
+        >
+            Entrar
+        </a>
+
+        <!-- CADASTRO -->
+
+        <a
+                href="/cadastro"
+                class="home-criar-conta"
+        >
+            Criar conta
+        </a>
+    </div>
+</header>
+
+<!-- CONTEÚDO PRINCIPAL-->
+
+<main class="home-conteudo">
+
+    <section class="home-hero">
+
+
+        <!-- FUNDO ESCURO -->
+
+        <div class="home-overlay"></div>
+
+        <!-- CONTEÚDO ESQUERDO -->
+
+        <div class="home-hero-conteudo">
+            <h1>
+                Encontre sua próxima
+                <br/>
+                leitura favorita
+
+            </h1>
+
+            <p>
+                Milhares de livros disponíveis para você explorar,
+                aprender e se inspirar.
+
+            </p>
+
+            <!-- PESQUISA PRINCIPAL -->
+
+            <form
+                    class="home-pesquisa"
+                    id="formPesquisaPublica"
+            >
+
+                <input
+                        type="text"
+                        id="pesquisaPublica"
+                        placeholder="Pesquisar por título, autor ou gênero..."
+                />
+
+                <button
+                        type="submit"
+                        aria-label="Pesquisar"
+                >
+                    🔍
+                </button>
+
+            </form>
+
+            <!--
+                 BENEFÍCIOS-->
+
+            <div class="home-beneficios">
+
+
+                <!-- BENEFÍCIO 1 -->
+
+                <div class="home-beneficio">
+
+                    <div class="beneficio-icone">
+                        📖
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Catálogo completo
+                        </strong>
+
+                        <span>
+                  Diversos gêneros e autores
+                </span>
+
+                    </div>
+
+                </div>
+
+                <!-- BENEFÍCIO 2 -->
+
+                <div class="home-beneficio">
+
+                    <div class="beneficio-icone">
+                        ⭐
+                    </div>
+
+                    <div>
+                        <strong>
+                            Sugestões personalizadas
+                        </strong>
+
+                        <span>
+                  Descubra novos livros
+                </span>
+
+                    </div>
+
+                </div>
+
+                <!-- BENEFÍCIO 3 -->
+
+                <div class="home-beneficio">
+
+                    <div class="beneficio-icone">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Gratuito e fácil
+                        </strong>
+
+                        <span>
+                  Crie sua conta e aproveite
+                </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD DE ACESSO-->
+        <div class="home-card-acesso">
+
+            <div class="home-card-ilustracao">
+                📚
+            </div>
+
+            <h2>
+                Acesse sua conta
+            </h2>
+
+            <p>
+                Faça login para gerenciar seus empréstimos e reservas.
+            </p>
+
+            <a
+                    href="/login"
+                    class="home-card-entrar"
+            >
+                Entrar
+            </a>
+
+            <a
+                    href="/cadastro"
+                    class="home-card-cadastro"
+            >
+                Criar conta
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- IVROS EM DESTAQUE-->
+
+    <section
+            class="home-livros"
+            id="livros"
+    >
+        <!-- TOPO DA SEÇÃO -->
+
+        <div class="home-livros-topo">
+
+            <h2>
+                Livros em destaque
+            </h2>
+
+            <button
+                    type="button"
+                    id="verTodosLivrosPublicos"
+                    class="home-ver-todos"
+            >
+                Ver todos →
+            </button>
+
+        </div>
+
+        <div
+                class="home-grid-livros"
+                id="listaLivrosPublicos"
+        >
+        </div>
+
+        <!-- NENHUM LIVRO -->
+        <div
+                id="mensagemSemLivrosPublicos"
+                class="home-sem-livros"
+                style="display: none"
+        >
+
+            <p>
+                Nenhum livro disponível no momento.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/js/script.js"></script>
+
+
+</body>
+
+</html>

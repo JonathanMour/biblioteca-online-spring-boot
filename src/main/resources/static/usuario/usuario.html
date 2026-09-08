@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Início - Biblioteca</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+         MENU LATERAL
+    ========================================== -->
+
+    <aside class="menu-usuario">
+      <div class="logo-usuario">
+        <h1>📖 Biblioteca</h1>
+        <span>ONLINE</span>
+      </div>
+
+      <nav class="menu-links-usuario">
+          <a href="/usuario">🏠 Início</a>
+          <a href="/usuario/livros">📖 Livros</a>
+          <a href="/usuario/emprestimos">📋 Meus Empréstimos</a>
+          <a href="/usuario/devolucoes">↪ Minhas Devoluções</a>
+          <a href="/usuario/perfil">👤 Meu Perfil</a>
+      </nav>
+
+      <!-- USUÁRIO NO FINAL DO MENU -->
+
+      <div class="rodape-usuario">
+        <div class="dados-usuario">
+          <div class="avatar-usuario">
+            <img
+              id="fotoUsuarioMenu"
+              alt="Foto do usuário"
+              style="display: none"
+            />
+
+            <span id="iconeUsuarioMenu"> 👤 </span>
+          </div>
+
+          <div>
+            <strong id="nomeUsuarioMenu"> Usuário </strong>
+
+            <span id="emailUsuarioMenu"> usuario@email.com </span>
+          </div>
+        </div>
+          <form action="/logout" method="post" class="form-logout">
+              <button type="submit" class="sair-usuario">
+                  🚪 Sair
+              </button>
+          </form>
+      </div>
+    </aside>
+
+    <!--  CONTEÚDO -->
+
+    <main class="painel-usuario">
+      <!-- TOPO -->
+
+      <header class="topo-usuario">
+        <div class="titulo-usuario"></div>
+
+        <div class="usuario-topo">
+          <button type="button" class="botao-notificacao">🔔</button>
+        </div>
+      </header>
+
+      <!--  BOAS-VINDAS-->
+      <section class="banner-usuario">
+        <div class="banner-conteudo-usuario">
+          <div class="icone-boas-vindas">📖</div>
+
+          <div>
+            <h1>
+              Bem-vindo,
+              <span id="nomeBoasVindasUsuario"> Usuário </span>!
+            </h1>
+
+            <p>
+              Aqui você pode consultar livros, acompanhar seus empréstimos e
+              muito mais.
+            </p>
+          </div>
+        </div>
+
+        <div class="desenho-banner">📚 </div>
+      </section>
+
+      <!--CARDS-->
+
+      <section class="cards-usuario">
+        <!-- EMPRÉSTIMOS ATIVOS -->
+
+        <article class="card-usuario azul">
+          <div class="icone-card-usuario">📖</div>
+
+          <div>
+            <strong id="inicioEmprestimosAtivos"> 0 </strong>
+
+            <span> Empréstimos Ativos </span>
+
+            <a href="/usuario/meus-emprestimos.html"> Ver empréstimos → </a>
+          </div>
+        </article>
+
+        <!-- DEVOLUÇÕES PENDENTES -->
+
+        <article class="card-usuario laranja">
+          <div class="icone-card-usuario">📅</div>
+
+          <div>
+            <strong id="inicioDevolucoesPendentes"> 0 </strong>
+
+            <span> Devoluções Pendentes </span>
+
+            <a href="/usuario/minhas-devolucoes.html"> Ver empréstimos → </a>
+          </div>
+        </article>
+
+        <!-- DEVOLUÇÕES REALIZADAS -->
+
+        <article class="card-usuario verde">
+          <div class="icone-card-usuario">✓</div>
+
+          <div>
+            <strong id="inicioDevolucoesRealizadas"> 0 </strong>
+
+            <span> Devoluções Realizadas </span>
+
+            <a href="/usuario/minhas-devolucoes.html"> Ver devoluções → </a>
+          </div>
+        </article>
+
+        <!-- LIVROS -->
+
+        <article class="card-usuario roxo">
+          <div class="icone-card-usuario">📚</div>
+
+          <div>
+            <strong id="inicioLivrosDisponiveis"> 0 </strong>
+
+            <span> Livros Disponíveis </span>
+
+            <a href="/usuario/livros"> Ver livros → </a>
+          </div>
+        </article>
+      </section>
+
+      <!--EMPRÉSTIMOS + PRÓXIMA DEVOLUÇÃO-->
+
+      <section class="grade-usuario">
+        <!-- MEUS EMPRÉSTIMOS -->
+
+        <article class="caixa-usuario">
+          <div class="titulo-caixa-usuario">
+            <h2>Meus Empréstimos</h2>
+
+            <a href="/usuario/meus-emprestimos.html"> Ver todos </a>
+          </div>
+
+          <div class="tabela-usuario">
+            <table>
+              <thead>
+                <tr>
+                  <th>Livro</th>
+                  <th>Data Empréstimo</th>
+                  <th>Data Devolução Prevista</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="inicioTabelaEmprestimos">
+                <!-- preenchido pelo JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!--  PRÓXIMA DEVOLUÇÃO -->
+
+        <article class="caixa-usuario proxima-devolucao">
+          <div class="titulo-caixa-usuario">
+            <h2>Próxima Devolução</h2>
+          </div>
+
+          <div class="conteudo-devolucao" id="inicioProximaDevolucao">
+            <!-- preenchido pelo JavaScript -->
+
+            <div>
+              <p>Nenhuma devolução pendente.</p>
+
+              <a href="/usuario/meus-emprestimos.html" class="botao-meus-emprestimos">
+                Ver meus empréstimos →
+              </a>
+            </div>
+
+            <div class="icone-calendario-grande">📅</div>
+          </div>
+        </article>
+      </section>
+
+      <!--  LIVROS EM DESTAQUE -->
+
+      <section class="livros-destaque">
+        <div class="titulo-caixa-usuario">
+          <h2>Livros em Destaque</h2>
+
+          <a href="/usuario/livros"> Ver todos </a>
+        </div>
+
+        <div class="lista-livros-destaque" id="inicioLivrosDestaque">
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

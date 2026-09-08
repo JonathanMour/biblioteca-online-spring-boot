@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Relatórios - Biblioteca</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+         MENU LATERAL ADMIN
+    ========================================== -->
+
+    <aside class="menu-admin">
+      <div class="logo-admin">
+        <h1>📖 Biblioteca</h1>
+        <span>ONLINE</span>
+      </div>
+
+      <nav class="menu-links">
+        <a href="/admin"> 🏠 Início </a>
+
+        <a href="usuarios.html"> 👥 Usuários </a>
+
+        <a href="/admin/livros"> 📚 Livros </a>
+
+        <a href="/admin/emprestimos.html"> 📖 Empréstimos </a>
+
+        <a href="/admin/devolucoes.html"> ↩️ Devoluções </a>
+
+        <a href="/admin/relatorio.html" class="ativo"> 📊 Relatórios </a>
+
+        <a href="/admin/configurações.html"> ⚙️ Configurações </a>
+      </nav>
+
+      <!-- ADMINISTRADOR -->
+
+      <div class="admin-rodape">
+        <div class="admin-info">
+          <div class="avatar-admin">👤</div>
+
+          <div>
+            <strong id="nomeAdminMenu"> Administrador </strong>
+
+            <span id="emailAdminMenu"> admin@biblioteca.com </span>
+          </div>
+        </div>
+
+      </div>
+
+        <a href="/" class="botao-sair">
+            🚪 Sair
+        </a>
+
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL-->
+
+    <main class="painel-admin">
+      <!--  CABEÇALHO -->
+      <header class="topo-admin">
+        <div class="titulo-topo">
+          <button type="button" class="botao-menu" aria-label="Abrir menu">
+            ☰
+          </button>
+
+          <h2>Relatórios</h2>
+        </div>
+
+        <div class="usuario-topo">
+          <button
+            type="button"
+            class="botao-notificacao"
+            aria-label="Notificações"
+          >
+            🔔
+          </button>
+
+          <span id="usuarioLogado"> Administrador </span>
+        </div>
+      </header>
+
+      <!-- BANNER -->
+
+      <section class="banner-admin">
+        <div class="banner-texto">
+          <div class="icone-banner">📊</div>
+          <div>
+            <h1>Relatórios da Biblioteca</h1>
+
+            <p>Gere relatórios e acompanhe os dados do sistema.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- FILTROS-->
+
+      <section class="caixa-admin relatorio-filtros" style="margin: 20px 30px">
+        <h2>Filtros</h2>
+        <form id="formRelatorio">
+          <div class="relatorio-filtros-grade">
+            <!-- TIPO -->
+            <div class="campo">
+              <label for="tipoRelatorio"> Tipo de Relatório </label>
+              <select id="tipoRelatorio">
+                <option value="">Selecione</option>
+                <option value="geral">Resumo Geral</option>
+                <option value="emprestimos">Empréstimos</option>
+                <option value="devolucoes">Devoluções</option>
+                <option value="usuarios">Usuários</option>
+                <option value="livros">Livros</option>
+                <option value="multas">Multas</option>
+              </select>
+            </div>
+            <!-- PERÍODO -->
+            <div class="campo">
+              <label for="periodoRelatorio"> Período </label>
+
+              <select id="periodoRelatorio">
+                <option value="mes">Este mês</option>
+                <option value="semana">Esta semana</option>
+                <option value="ano">Este ano</option>
+                <option value="personalizado">Personalizado</option>
+              </select>
+            </div>
+
+            <!-- DATA INICIAL -->
+            <div class="campo">
+              <label for="dataInicialRelatorio"> Data Inicial </label>
+
+              <input type="date" id="dataInicialRelatorio" />
+            </div>
+            <!-- DATA FINAL -->
+            <div class="campo">
+              <label for="dataFinalRelatorio"> Data Final </label>
+
+              <input type="date" id="dataFinalRelatorio" />
+            </div>
+            <!-- BOTÃO -->
+            <div class="relatorio-botao-filtro">
+              <button type="submit" class="botao-principal">
+                🔎 Gerar Relatório
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- CARDS RESUMO-->
+      <section class="cards-admin relatorio-cards">
+        <article class="card-admin card-usuarios">
+          <div class="icone-card">👥</div>
+          <div>
+            <strong id="relatorioTotalUsuarios"> 0 </strong>
+            <span> Usuários Cadastrados </span>
+          </div>
+        </article>
+        <article class="card-admin card-livros">
+          <div class="icone-card">📚</div>
+
+          <div>
+            <strong id="relatorioTotalLivros"> 0 </strong>
+
+            <span> Livros Cadastrados </span>
+          </div>
+        </article>
+
+        <article class="card-admin card-emprestimos">
+          <div class="icone-card">🔄</div>
+          <div>
+            <strong id="relatorioTotalEmprestimos"> 0 </strong>
+
+            <span> Empréstimos Realizados </span>
+          </div>
+        </article>
+
+        <article class="card-admin card-devolucoes">
+          <div class="icone-card">↩️</div>
+
+          <div>
+            <strong id="relatorioTotalDevolucoes"> 0 </strong>
+
+            <span> Devoluções Realizadas </span>
+          </div>
+        </article>
+
+        <article class="card-admin card-atrasos">
+          <div class="icone-card">⚠️</div>
+
+          <div>
+            <strong id="relatorioTotalAtrasos"> 0 </strong>
+
+            <span> Atrasos no Período </span>
+          </div>
+        </article>
+      </section>
+
+      <!-- RELATÓRIOS PRINCIPAIS  -->
+
+      <section class="relatorio-grade">
+        <!-- EMPRÉSTIMOS POR PERÍODO -->
+        <article class="caixa-admin">
+          <div class="titulo-caixa">
+            <h2>Empréstimos por Período</h2>
+          </div>
+          <div class="tabela-responsiva">
+            <table>
+              <thead>
+                <tr>
+                  <th>Período</th>
+                  <th>Quantidade de Empréstimos</th>
+                    <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="corpoRelatorioEmprestimosPeriodo">
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <!-- LIVROS MAIS EMPRESTADOS -->
+
+        <article class="caixa-admin">
+          <div class="titulo-caixa">
+            <h2>Livros Mais Emprestados</h2>
+          </div>
+          <div class="tabela-responsiva">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Livro</th>
+                  <th>Quantidade</th>
+                </tr>
+              </thead>
+
+              <tbody id="corpoLivrosMaisEmprestados">
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- EMPRÉSTIMOS RECENTES-->
+
+      <section class="caixa-admin" style="margin: 20px 30px 30px">
+        <div class="titulo-caixa">
+          <h2>Empréstimos Recentes</h2>
+
+          <a href="emprestimos.html"> Ver todos </a>
+        </div>
+
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+
+                <th>Usuário</th>
+
+                <th>Livro</th>
+
+                <th>Data do Empréstimo</th>
+
+                <th>Previsão de Devolução</th>
+
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="corpoRelatorioEmprestimosRecentes"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

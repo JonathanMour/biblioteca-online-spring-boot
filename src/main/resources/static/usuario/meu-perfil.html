@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+    <title>Meu Perfil - Biblioteca</title>
+    <link
+            rel="icon"
+            type="image/png"
+            href="../img/icon.png"
+    >
+    <link
+            rel="stylesheet"
+            href="../css/style.css"
+    >
+</head>
+<body>
+
+<!-- MENU LATERAL-->
+
+<aside class="menu-usuario">
+
+    <div class="logo-usuario">
+
+        <h1>📖 Biblioteca</h1>
+
+        <span>ONLINE</span>
+
+    </div>
+
+    <nav class="menu-links-usuario">
+        <a href="/usuario">
+            🏠 Início
+        </a>
+        <a href="/usuario/livros">
+            📖 Livros
+        </a>
+        <a href="/usuario/emprestimos">
+            📋 Meus Empréstimos
+        </a>
+        <a href="/usuario/devolucoes">
+            ↪ Minhas Devoluções
+        </a>
+        <a
+                href="/usuario/perfil"
+                class="ativo"
+        >
+            👤 Meu Perfil
+        </a>
+
+    </nav>
+
+    <!-- USUÁRIO NO MENU -->
+    <div class="rodape-usuario">
+        <div class="dados-usuario">
+            <div class="avatar-usuario">
+
+                <img
+                        id="fotoUsuarioMenu"
+                        alt="Foto do usuário"
+                        style="display: none"
+                >
+                <span id="iconeUsuarioMenu">
+                    👤
+                </span>
+
+            </div>
+
+            <div>
+
+                <strong id="nomeUsuarioMenu">
+                    Usuário
+                </strong>
+
+                <span id="emailUsuarioMenu">
+                    usuario@email.com
+                </span>
+
+            </div>
+        </div>
+        <form action="/logout" method="post" class="form-logout">
+            <button type="submit" class="sair-usuario">
+                🚪 Sair
+            </button>
+        </form>
+    </div>
+    </div>
+</aside>
+
+<!--CONTEÚDO -->
+<main class="painel-usuario">
+
+    <header class="topo-usuario">
+        <div class="titulo-usuario"></div>
+        <div class="usuario-topo">
+            <button
+                    type="button"
+                    class="botao-notificacao"
+            >
+                🔔
+            </button>
+        </div>
+    </header>
+
+    <!-- BANNER-->
+
+    <section class="banner-usuario">
+
+        <div class="banner-conteudo-usuario">
+
+            <div>
+
+                <h1>Meu Perfil</h1>
+
+                <p>
+                    Consulte e atualize suas
+                    informações pessoais.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--  ÁREA DO PERFIL -->
+
+    <section class="area-perfil-usuario">
+
+        <!--  CARTÃO DO PERFIL -->
+
+        <article class="cartao-perfil-usuario">
+
+            <!--  FOTO DO USUÁRIO -->
+
+            <div class="area-foto-perfil">
+                <label
+                        for="inputFotoPerfil"
+                        class="label-foto-perfil"
+                        title="Clique para alterar sua foto"
+                >
+                    <div class="avatar-perfil-grande">
+                        <img
+                                id="fotoPerfil"
+                                alt="Foto de perfil"
+                                style="display: none"
+                        >
+                        <span id="iconePerfilPadrao">
+                            👤
+                        </span>
+
+                    </div>
+
+                </label>
+
+                <!-- INPUT DE ARQUIVO -->
+
+                <input
+                        type="file"
+                        id="inputFotoPerfil"
+                        accept="image/png, image/jpeg, image/webp"
+                        style="display: none"
+                >
+
+                <!-- BOTÃO ALTERAR FOTO -->
+
+                <div class="acoes-foto-perfil">
+
+
+                    <button
+                            type="button"
+                            id="botaoAlterarFoto"
+                            class="botao-alterar-foto"
+                    >
+                        📷 Alterar foto
+                    </button>
+
+                    <button
+                            type="button"
+                            id="botaoRemoverFoto"
+                            class="botao-remover-foto"
+                            style="display: none"
+                    >
+                        🗑 Remover foto
+                    </button>
+
+                </div>
+            </div>
+
+            <!--  NOME -->
+
+            <h2 id="nomePerfil">
+                Usuário
+            </h2>
+
+
+            <!-- STATUS-->
+
+            <span class="status ativo">
+                Ativo
+            </span>
+
+
+            <!-- INFORMAÇÕES-->
+
+            <div class="info-perfil-usuario">
+
+
+                <!-- EMAIL -->
+
+                <div>
+
+                    <span>
+                        E-mail
+                    </span>
+
+                    <strong id="emailPerfil">
+                        usuario@email.com
+                    </strong>
+
+                </div>
+
+                <!-- CPF -->
+                <div>
+                    <span>
+                        CPF
+                    </span>
+
+                    <strong id="cpfPerfil">
+                        000.000.000-00
+                    </strong>
+
+                </div>
+
+
+                <!-- TELEFONE -->
+
+                <div>
+
+                    <span>
+                        Telefone
+                    </span>
+
+                    <strong id="telefonePerfil">
+                        (00) 00000-0000
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- EDITAR INFORMAÇÕES-->
+
+        <article class="caixa-usuario">
+
+
+            <div class="titulo-caixa-usuario">
+
+                <div>
+
+                    <h2>
+                        Editar informações
+                    </h2>
+
+                    <p>
+                        Atualize seus dados pessoais.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!--  FORMULÁRIO-->
+            <form
+                    id="formPerfil"
+                    class="form-perfil-usuario"
+            >
+                <!-- NOME -->
+
+                <div class="campo">
+                    <label for="nomePerfilInput">
+                        Nome completo
+                    </label>
+                    <input
+                            type="text"
+                            id="nomePerfilInput"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                            required
+                    >
+                </div>
+                <!-- TELEFONE -->
+
+                <div class="campo">
+                    <label for="telefonePerfilInput">
+                        Telefone
+                    </label>
+                    <input
+                            type="tel"
+                            id="telefonePerfilInput"
+                            placeholder="(00) 00000-0000"
+                            autocomplete="tel"
+                    >
+
+                </div>
+
+                <!-- NOVA SENHA -->
+                <div class="campo">
+
+                    <label for="senhaPerfil">
+                        Nova senha
+                    </label>
+
+                    <input
+                            type="password"
+                            id="senhaPerfil"
+                            placeholder="Deixe em branco para não alterar"
+                            autocomplete="new-password"
+                    >
+
+                </div>
+
+                <!-- CONFIRMAR NOVA SENHA -->
+                <div class="campo">
+                    <label for="confirmarSenhaPerfil">
+                        Confirmar nova senha
+                    </label>
+                    <input
+                            type="password"
+                            id="confirmarSenhaPerfil"
+                            placeholder="Confirme a nova senha"
+                            autocomplete="new-password"
+                    >
+                </div>
+
+                <!-- BOTÕES-->
+                <div class="acoes-perfil">
+                    <button
+                            type="button"
+                            class="botao-secundario"
+                            id="cancelarPerfil"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                            type="submit"
+                            class="botao-principal"
+                    >
+                        Salvar alterações
+                    </button>
+
+                </div>
+            </form>
+        </article>
+    </section>
+</main>
+<script src="/js/script.js"></script>
+</body>
+</html>

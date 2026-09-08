@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Livros - Biblioteca</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- MENU LATERAL ADMIN -->
+
+    <aside class="menu-admin">
+      <div class="logo-admin">
+        <h1>📖 Biblioteca</h1>
+        <span>ONLINE</span>
+      </div>
+
+      <nav class="menu-links">
+        <a href="index.html"> 🏠 Início </a>
+
+        <a href="usuarios.html"> 👥 Usuários </a>
+
+        <a href="/usuario/livros" class="ativo"> 📚 Livros </a>
+
+        <a href="/admin/emprestimos.html"> 📖 Empréstimos </a>
+
+        <a href="/admin/devolucoes.html"> ↩️ Devoluções </a>
+
+        <a href="/admin/relatorio.html"> 📊 Relatórios </a>
+
+        <a href="/admin/configurações.html"> ⚙️ Configurações </a>
+      </nav>
+
+      <!--ADMINISTRADOR -->
+
+      <div class="admin-rodape">
+        <div class="admin-info">
+          <div class="avatar-admin">👤</div>
+
+          <div>
+            <strong id="nomeAdminMenu"> Administrador </strong>
+
+            <span id="emailAdminMenu"> admin@biblioteca.com </span>
+          </div>
+        </div>
+
+          <a href="/" class="botao-sair">
+              🚪 Sair
+          </a>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL-->
+
+    <main class="painel-admin">
+      <!-- CABEÇALHO-->
+
+      <header class="topo-admin">
+        <div class="titulo-topo">
+          <button type="button" class="botao-menu" aria-label="Abrir menu">
+            ☰
+          </button>
+
+          <h2>Livros</h2>
+        </div>
+
+        <div class="usuario-topo">
+          <button
+            type="button"
+            class="botao-notificacao"
+            aria-label="Notificações"
+          >
+            🔔
+          </button>
+
+          <span id="usuarioLogado"> Administrador </span>
+        </div>
+      </header>
+
+      <!--  ÁREA DOS LIVROS-->
+
+      <section class="caixa-admin" style="margin: 30px">
+        <!-- TOPO -->
+        <div class="topo-livros">
+          <div>
+            <h1>Livros</h1>
+
+            <p>Gerencie os livros cadastrados na biblioteca.</p>
+          </div>
+
+          <a href="novo-livro.html" class="botao-principal"> + Novo Livro </a>
+        </div>
+
+        <!-- PESQUISA-->
+
+        <form class="pesquisa-livros" id="formPesquisaLivroAdmin">
+          <label for="pesquisaLivroAdmin" class="label-oculta">
+            Buscar livro
+          </label>
+
+          <input
+            type="text"
+            id="pesquisaLivroAdmin"
+            placeholder="Pesquisar por título, autor, gênero ou ISBN"
+          />
+
+          <button type="submit" class="botao-principal">Pesquisar</button>
+        </form>
+
+        <!-- TABELA -->
+
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Capa</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>ISBN</th>
+                <th>Disponíveis</th>
+              
+              </tr>
+            </thead>
+
+            <tbody id="corpoTabelaLivrosAdmin">
+
+            </tbody>
+          </table>
+        </div>
+
+        <!--  PAGINAÇÃO -->
+
+        <div class="rodape-tabela">
+          <p id="textoPaginacaoLivrosAdmin">Mostrando 0 livros</p>
+
+          <div class="paginacao" id="paginacaoLivrosAdmin">
+       
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

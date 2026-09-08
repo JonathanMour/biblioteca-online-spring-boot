@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cadastro - Biblioteca</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="pagina-cadastro-foto">
+    <main class="cadastro-foto-layout">
+      <!-- LADO ESQUERDO -->
+      <section class="cadastro-apresentacao">
+        <div class="overlay-cadastro"></div>
+
+        <div class="conteudo-cadastro-esquerda">
+          <div class="marca-cadastro">
+            <div class="icone-marca-cadastro">📖</div>
+
+            <div>
+              <h1>📖 BIBLIOTECA</h1>
+              <span>ONLINE</span>
+            </div>
+          </div>
+
+          <div class="texto-cadastro">
+            <h2>
+              Faça parte
+              <br />
+              da nossa biblioteca.
+            </h2>
+
+            <p>
+              Crie sua conta para consultar livros, acompanhar seus empréstimos
+              e acessar todas as funcionalidades do sistema.
+            </p>
+          </div>
+
+          <div class="recursos-cadastro">
+            <div>
+              <span>📚</span>
+              <strong>Consulte</strong>
+              <p>livros disponíveis</p>
+            </div>
+
+            <div>
+              <span>📋</span>
+              <strong>Acompanhe</strong>
+              <p>seus empréstimos</p>
+            </div>
+
+            <div>
+              <span>↪️</span>
+              <strong>Veja</strong>
+              <p>suas devoluções</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LADO DIREITO -->
+      <section class="area-cadastro-foto">
+        <div class="card-cadastro-foto">
+          <div class="cabecalho-cadastro-foto">
+            <h2>Crie sua conta</h2>
+
+            <p>Preencha seus dados para começar.</p>
+          </div>
+
+          <form id="formCadastro">
+            <!-- NOME -->
+            <div class="campo-cadastro-foto">
+              <label for="nome"> Nome completo </label>
+
+              <div class="input-cadastro-foto">
+                <span>👤</span>
+
+                <input
+                  type="text"
+                  id="nome"
+                  placeholder="Digite seu nome"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- CPF -->
+            <div class="campo-cadastro-foto">
+              <label for="cpf"> CPF </label>
+
+              <div class="input-cadastro-foto">
+                <span>🪪</span>
+
+                <input
+                  type="text"
+                  id="cpf"
+                  placeholder="000.000.000-00"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="campo-cadastro-foto">
+              <label for="email"> E-mail </label>
+
+              <div class="input-cadastro-foto">
+                <span>✉️</span>
+
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="seuemail@exemplo.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- TELEFONE -->
+            <div class="campo-cadastro-foto">
+              <label for="telefone"> Telefone </label>
+
+              <div class="input-cadastro-foto">
+                <span>📱</span>
+
+                <input
+                  type="text"
+                  id="telefone"
+                  placeholder="(11) 99999-9999"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- SENHA -->
+            <div class="campo-cadastro-foto">
+              <label for="senha"> Senha </label>
+
+              <div class="input-cadastro-foto">
+                <span>🔒</span>
+
+                <input
+                  type="password"
+                  id="senha"
+                  placeholder="Crie uma senha"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- CONFIRMAR SENHA -->
+            <div class="campo-cadastro-foto">
+              <label for="confirmarSenha"> Confirmar senha </label>
+
+              <div class="input-cadastro-foto">
+                <span>🔒</span>
+
+                <input
+                  type="password"
+                  id="confirmarSenha"
+                  placeholder="Digite a senha novamente"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- TERMOS -->
+            <label class="termos-cadastro">
+              <input type="checkbox" required />
+
+              <span> Concordo com os termos de uso. </span>
+            </label>
+
+            <!-- BOTÃO -->
+            <button type="submit" class="botao-cadastro-foto">
+              Criar conta
+            </button>
+          </form>
+
+          <p class="login-cadastro-link">
+            Já possui uma conta?
+
+            <a href="login.html"> Entrar </a>
+          </p>
+        </div>
+      </section>S
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

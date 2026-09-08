@@ -1,0 +1,4892 @@
+
+
+/* Aplica o modelo de cálculo das caixas */
+* {
+  box-sizing: border-box;
+}
+/* Configuração geral do corpo da página */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  background: #f3f4f6;
+  color: #172033;
+  font-family: Arial, sans-serif;
+}
+/* Menu principal */
+.menu {
+  width: 220px;
+  min-height: 100vh;
+  padding: 28px 18px;
+  background: #21425f;
+  color: #fff;
+}
+/* Logo do sistema */
+.marca {
+  color: #fff;
+  text-decoration: none;
+}
+/* Título do sistema */
+.marca h1 {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+/* Subtítulo */
+.marca p {
+  margin: 0 0 28px;
+  color: #dbeafe;
+}
+/* Lista do menu */
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Espaçamento entre os itens */
+.menu li {
+  margin-bottom: 8px;
+}
+/* Links do menu */
+.menu a:not(.marca) {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+}
+/* Cor ao passar o mouse */
+.menu a:not(.marca):hover {
+  background: #2f68d8;
+}
+/* Conteúdo da página */
+.conteudo {
+  flex: 1;
+  min-width: 0;
+  padding: 16px;
+}
+/* Organiza o cabeçalho, o topo dos livros e o rodapé da tabela */
+.cabecalho,
+.topo-livros,
+.rodape-tabela {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Define fundo branco, cantos arredondados e sombra */
+.cabecalho,
+.caixa,
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+/* Espaçamento do cabeçalho */
+.cabecalho {
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+/* Organiza elementos em linha e adiciona espaço entre eles */
+.linha,
+.ver-todos,
+.paginacao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Estilo do título Dashboard */
+.titulo-dashboard {
+  color: #172033;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+/* Estilo dos botões que possuem ícones */
+.botao-icone {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: #eef2ff;
+  cursor: pointer;
+}
+/* Organiza os quatro cards do Dashboard */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+/* Define tamanho e espaçamento interno de cada card */
+.card {
+  min-height: 120px;
+  padding: 20px;
+}
+/* Estilo do texto dentro do card */
+.card span {
+  display: block;
+  margin-bottom: 10px;
+  color: #556070;
+}
+/* Estilo do número principal dentro do card */
+.card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+/* Espaçamento superior da opção Ver todos */
+.ver-todos {
+  margin-top: 10px;
+}
+/* Estilo do link Ver todos */
+.ver-todos a {
+  color: #2459c4;
+  text-decoration: none;
+}
+/* Espaçamento interno das caixas */
+.caixa {
+  padding: 18px;
+}
+/* Espaçamento abaixo da seção de livros */
+.livros {
+  margin-bottom: 16px;
+}
+/* Linha inferior e espaçamento do topo da seção de livros */
+.topo-livros {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+/* Remove a margem padrão dos títulos */
+.topo-livros h2,
+.caixa h2 {
+  margin: 0;
+}
+/* Estilo compartilhado entre os botões principal e secundário */
+.botao-principal,
+.botao-secundario {
+  padding: 10px 15px;
+  border-radius: 7px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Estilo do botão principal */
+.botao-principal {
+  border: 0;
+  background: #2864e8;
+  color: #fff;
+}
+
+/* Estilo do botão secundário */
+.botao-secundario {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #172033;
+}
+
+/* Organiza o campo e o botão de pesquisa */
+.pesquisa-livros {
+  display: flex;
+  gap: 8px;
+  width: min(520px, 100%);
+  margin: 16px 0;
+}
+
+/* Estilo dos campos de pesquisa e dos campos do formulário */
+.pesquisa-livros input,
+.campo input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+}
+
+/* Permite rolagem horizontal quando a tabela for grande */
+.tabela-responsiva {
+  overflow-x: auto;
+}
+/* Faz a tabela ocupar toda a largura e une suas bordas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilo das células e títulos da tabela */
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+/* Cor de fundo do cabeçalho da tabela */
+th {
+  background: #f8fafc;
+}
+
+/* Caixa usada como capa provisória do livro */
+.capa-placeholder {
+  width: 42px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #eee;
+  font-size: 26px;
+}
+
+/* Estilo geral das etiquetas de status */
+.status {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Cor do status Ativo */
+.status.ativo {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* Cor do status Devolvido */
+.status.devolvido {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Espaçamento superior do rodapé da tabela */
+.rodape-tabela {
+  margin-top: 14px;
+}
+
+/* Estilo do texto de quantidade de registros */
+.rodape-tabela p {
+  margin: 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+/* Estilo dos botões da paginação */
+.paginacao button {
+  min-width: 34px;
+  height: 34px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* Destaque da página atualmente selecionada */
+.paginacao .pagina-ativa {
+  border-color: #2864e8;
+  background: #2864e8;
+  color: #fff;
+}
+
+/* Coloca empréstimos e devoluções lado a lado */
+.historico {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Esconde visualmente a label, mantendo a acessibilidade */
+.label-oculta {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* Espaçamento das páginas de formulário e páginas simples */
+.pagina-formulario,
+.pagina-simples {
+  flex: 1;
+  width: 100%;
+  padding: 24px;
+}
+
+/* Caixa principal das páginas de formulário e páginas simples */
+.formulario-pagina,
+.painel-simples {
+  width: 100%;
+  max-width: none;
+  padding: 32px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  min-height: 85vh;
+}
+
+/* Organiza o formulário de livro em duas colunas */
+#formLivro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Organiza a label e o campo um embaixo do outro */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Organiza os botões do formulário */
+.acoes-formulario {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Estilo do link Voltar */
+.voltar {
+  color: #2459c4;
+  text-decoration: none;
+}
+
+/* Ajustes para telas menores que 1000 pixels */
+@media (max-width: 1000px) {
+  /* Coloca os cards em duas colunas */
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Coloca o histórico em uma coluna */
+  .historico {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ajustes para celulares e telas menores que 760 pixels */
+@media (max-width: 760px) {
+  /* Retira o alinhamento lateral do body */
+  body {
+    display: block;
+  }
+
+  /* Faz o menu ocupar toda a largura */
+  .menu {
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* Coloca os cards em uma única coluna */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Coloca os elementos um abaixo do outro */
+  .cabecalho,
+  .topo-livros,
+  .rodape-tabela {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Coloca os campos do formulário em uma coluna */
+  #formLivro {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Organiza a capa e o formulário em duas colunas */
+.area-cadastro {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Centraliza o conteúdo da prévia da capa */
+.preview-capa {
+  text-align: center;
+}
+
+/* Capa vazia */
+.capa-vazia {
+  /* Centraliza o ícone dentro da caixa */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Define a cor do fundo da capa */
+  background-color: #f3f4f6;
+
+  /* Define a borda da capa */
+  border: 2px dashed #cbd5e1;
+
+  /* Arredonda os cantos da capa */
+  border-radius: 30px;
+
+  /* Define o tamanho do ícone */
+  font-size: 70px;
+}
+
+/*usuários*/
+.topo-usuarios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.topo-usuarios h1 {
+  margin: 0;
+}
+
+.topo-usuarios p {
+  margin: 6px 0 0;
+}
+
+/*Tabela de usuários*/
+.topo-emprestimos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.topo-emprestimos h1 {
+  margin: 0;
+}
+
+.topo-emprestimos p {
+  margin: 6px 0 0;
+}
+
+/*Tabela de usuários*/
+.topo-devolucoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.topo-devolucoes h1 {
+  margin: 0;
+}
+
+.topo-devolucoes p {
+  margin: 6px 0 0;
+}
+
+.status.multa {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Tela de login */
+/* Tela de login */
+.pagina-login-nova {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: #f3f4f6;
+}
+
+.caixa-login {
+  width: 100%;
+  max-width: 430px;
+  padding: 32px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo-login {
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.logo-login h1 {
+  margin: 0 0 8px;
+  color: #21425f;
+}
+
+.logo-login p {
+  margin: 0;
+  color: #667085;
+}
+
+#formLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.botao-login {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.link-cadastro {
+  margin: 22px 0 0;
+  text-align: center;
+  color: #667085;
+}
+
+.link-cadastro a {
+  color: #2864e8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dados-admin {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.dados-admin strong {
+  font-size: 14px;
+}
+
+.dados-admin span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* =========================
+   PAINEL ADMIN
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+/* =========================
+   MENU LATERAL
+========================= */
+
+.menu-admin {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 250px;
+  height: 100vh;
+
+  background: #0c2447;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 16px;
+}
+
+.logo-admin {
+  padding: 0 12px 28px;
+}
+
+.logo-admin h1 {
+  margin: 0;
+
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.logo-admin span {
+  display: block;
+
+  margin-left: 42px;
+
+  color: #4294ff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* LINKS DO MENU */
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.menu-links a {
+  color: white;
+  text-decoration: none;
+
+  padding: 14px 16px;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+.menu-links a:hover {
+  background: #173866;
+}
+
+.menu-links a.ativo {
+  background: #1f5fc4;
+}
+
+/* RODAPÉ DO MENU */
+
+.admin-rodape {
+  margin-top: auto;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  padding-top: 20px;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding-bottom: 20px;
+}
+
+.avatar-admin {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+}
+
+.admin-info div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-info span {
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  color: #b8c6da;
+}
+
+.botao-sair {
+  display: block;
+
+  color: white;
+  text-decoration: none;
+
+  padding: 14px 6px;
+
+  font-weight: bold;
+}
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+.painel-admin {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.topo-admin {
+  height: 78px;
+
+  background: white;
+
+  border-bottom: 1px solid #e2e7ef;
+
+  padding: 0 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo-topo {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.titulo-topo h2 {
+  margin: 0;
+
+  font-size: 23px;
+}
+
+.botao-menu,
+.botao-notificacao {
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 22px;
+}
+
+.usuario-topo {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+/* =========================
+   BANNER
+========================= */
+
+.banner-admin {
+  margin: 28px 30px 24px;
+
+  padding: 28px 34px;
+
+  min-height: 150px;
+
+  border: 1px solid #d8e4f6;
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #f2f7ff, #ffffff);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-texto {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.icone-banner {
+  width: 82px;
+  height: 82px;
+
+  border-radius: 50%;
+
+  background: #deebff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 40px;
+}
+
+.banner-texto h1 {
+  margin: 0 0 10px;
+
+  font-size: 28px;
+}
+
+.banner-texto p {
+  margin: 0;
+
+  color: #5e6778;
+}
+
+.banner-ilustracao {
+  font-size: 52px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards-admin {
+  margin: 0 30px 24px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.card-admin {
+  min-height: 145px;
+
+  border-radius: 12px;
+
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  border: 1px solid #dde5ef;
+}
+
+.card-admin .icone-card {
+  width: 64px;
+  height: 64px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+}
+
+.card-admin > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-admin strong {
+  font-size: 30px;
+
+  margin-bottom: 4px;
+}
+
+.card-admin span {
+  font-size: 14px;
+
+  margin-bottom: 18px;
+
+  font-weight: 600;
+}
+
+.card-admin a {
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+
+/* CORES DOS CARDS */
+
+.card-usuarios {
+  background: #eef6ff;
+}
+
+.card-usuarios a {
+  color: #1464d2;
+}
+
+.card-livros {
+  background: #effaf5;
+}
+
+.card-livros a {
+  color: #13805b;
+}
+
+.card-emprestimos {
+  background: #fff8ec;
+}
+
+.card-emprestimos a {
+  color: #d67a00;
+}
+
+.card-devolucoes {
+  background: #f8f2ff;
+}
+
+.card-devolucoes a {
+  color: #7542c8;
+}
+
+/* =========================
+   ÁREA CENTRAL
+========================= */
+
+.grade-admin {
+  margin: 0 30px 24px;
+
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+
+  gap: 20px;
+}
+
+.caixa-admin {
+  background: white;
+
+  border: 1px solid #e1e6ed;
+
+  border-radius: 12px;
+
+  padding: 22px;
+
+  box-shadow: 0 2px 8px rgba(20, 30, 50, 0.04);
+}
+
+.titulo-caixa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.titulo-caixa h2 {
+  margin: 0;
+
+  font-size: 18px;
+}
+
+.titulo-caixa a {
+  text-decoration: none;
+
+  color: #1769d2;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+
+/* TABELA */
+
+.tabela-responsiva {
+  overflow-x: auto;
+}
+
+.tabela-responsiva table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.tabela-responsiva thead {
+  background: #f7f9fc;
+}
+
+.tabela-responsiva th,
+.tabela-responsiva td {
+  padding: 13px 10px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #e7ebf0;
+
+  font-size: 13px;
+}
+
+.tabela-responsiva th {
+  font-weight: 700;
+}
+
+.status {
+  display: inline-block;
+
+  padding: 5px 12px;
+
+  border-radius: 15px;
+
+  font-size: 12px;
+}
+
+.status.ativo {
+  background: #e4f7ea;
+  color: #188641;
+}
+
+/* =========================
+   DEVOLUÇÕES
+========================= */
+
+.lista-devolucoes {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-devolucao {
+  display: grid;
+
+  grid-template-columns: 50px 1fr auto;
+
+  gap: 14px;
+
+  align-items: center;
+
+  padding: 16px 0;
+
+  border-bottom: 1px solid #e7ebf0;
+}
+
+.item-devolucao:last-child {
+  border-bottom: none;
+}
+
+.icone-livro {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 8px;
+
+  background: #f2eaff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+}
+
+.info-devolucao {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.info-devolucao strong {
+  font-size: 14px;
+}
+
+.info-devolucao span {
+  font-size: 12px;
+
+  color: #5d6573;
+}
+
+.data-devolucao {
+  display: flex;
+  flex-direction: column;
+
+  text-align: right;
+
+  gap: 6px;
+}
+
+.data-devolucao span {
+  font-size: 12px;
+}
+
+.data-devolucao strong {
+  color: #e12b2b;
+
+  font-size: 13px;
+}
+
+/* =========================
+   AÇÕES RÁPIDAS
+========================= */
+
+.acoes-admin {
+  margin: 0 30px;
+
+  padding: 22px;
+
+  background: white;
+
+  border: 1px solid #e1e6ed;
+
+  border-radius: 12px;
+}
+
+.acoes-admin h2 {
+  margin: 0 0 20px;
+
+  font-size: 18px;
+}
+
+.botoes-acoes {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 20px;
+}
+
+.acao-rapida {
+  min-height: 64px;
+
+  border-radius: 8px;
+
+  border: 1px solid #dce4ee;
+
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: #172033;
+
+  font-weight: bold;
+
+  background: #f9fbff;
+
+  transition: 0.2s;
+}
+
+.acao-rapida:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 12px rgba(20, 30, 50, 0.1);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1100px) {
+  .cards-admin {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grade-admin {
+    grid-template-columns: 1fr;
+  }
+
+  .botoes-acoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .menu-admin {
+    position: static;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .painel-admin {
+    margin-left: 0;
+  }
+
+  .cards-admin {
+    grid-template-columns: 1fr;
+  }
+
+  .banner-admin {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .banner-ilustracao {
+    display: none;
+  }
+
+  .botoes-acoes {
+    grid-template-columns: 1fr;
+  }
+
+  .topo-admin {
+    padding: 0 18px;
+  }
+
+  .banner-admin,
+  .cards-admin,
+  .grade-admin,
+  .acoes-admin {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+} /* =========================================
+
+   PAINEL DO USUÁRIO
+========================================= */
+
+.menu-usuario {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 265px;
+  height: 100vh;
+  background: #062750;
+  color: white;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+/* LOGO */
+
+.logo-usuario {
+  padding: 0 15px 35px;
+}
+
+.logo-usuario h1 {
+  margin: 0;
+
+  font-size: 23px;
+}
+
+.logo-usuario span {
+  display: block;
+
+  margin-left: 52px;
+
+  color: #1681ff;
+
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* MENU */
+
+.menu-links-usuario {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.menu-links-usuario a {
+  padding: 15px 16px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  color: white;
+
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.menu-links-usuario a:hover {
+  background: #10427a;
+}
+
+.menu-links-usuario a.ativo {
+  background: #1760c2;
+}
+
+/* RODAPÉ */
+
+.rodape-usuario {
+  margin-top: auto;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  padding-top: 20px;
+}
+
+.dados-usuario {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding-bottom: 20px;
+}
+
+.avatar-usuario {
+  width: 44px;
+  height: 44px;
+
+  background: white;
+
+  color: #222;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 23px;
+}
+
+.dados-usuario > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.dados-usuario span {
+  font-size: 12px;
+
+  color: #cbd8e8;
+}
+
+.sair-usuario {
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+/* =========================================
+   CONTEÚDO
+========================================= */
+
+.painel-usuario {
+  margin-left: 265px;
+  width: calc(100% - 265px);
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* TOPO */
+
+.topo-usuario {
+  height: 72px;
+
+  background: white;
+
+  border-bottom: 1px solid #e2e6ed;
+
+  padding: 0 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo-usuario {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.titulo-usuario h2 {
+  margin: 0;
+
+  font-size: 20px;
+}
+
+.botao-menu-usuario,
+.botao-notificacao {
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 20px;
+}
+
+.usuario-topo {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.avatar-topo {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #edf0f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   BANNER
+========================================= */
+
+.banner-usuario {
+  margin: 25px 30px 20px;
+
+  padding: 27px 35px;
+
+  min-height: 145px;
+
+  background: white;
+
+  border: 1px solid #e1e6ef;
+
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-conteudo-usuario {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.icone-boas-vindas {
+  width: 82px;
+  height: 82px;
+
+  border-radius: 50%;
+
+  background: #f0eaff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 38px;
+}
+
+.banner-conteudo-usuario h1 {
+  margin: 0 0 12px;
+
+  font-size: 27px;
+}
+
+.banner-conteudo-usuario p {
+  margin: 0;
+
+  max-width: 520px;
+
+  color: #53627a;
+
+  line-height: 1.7;
+}
+
+.desenho-banner {
+  font-size: 50px;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.cards-usuario {
+  margin: 0 30px 20px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.card-usuario {
+  min-height: 135px;
+
+  padding: 22px;
+
+  background: white;
+
+  border: 1px solid #e1e6ef;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.icone-card-usuario {
+  width: 65px;
+  height: 65px;
+
+  min-width: 65px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 29px;
+}
+
+.card-usuario > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-usuario strong {
+  font-size: 28px;
+
+  margin-bottom: 4px;
+}
+
+.card-usuario span {
+  font-size: 14px;
+
+  color: #34435b;
+
+  margin-bottom: 13px;
+}
+
+.card-usuario a {
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: bold;
+}
+
+/* CORES */
+
+.card-usuario.azul .icone-card-usuario {
+  background: #e1ebff;
+}
+
+.card-usuario.azul a {
+  color: #0057e7;
+}
+
+.card-usuario.laranja .icone-card-usuario {
+  background: #fff0dc;
+}
+
+.card-usuario.laranja a {
+  color: #e56c00;
+}
+
+.card-usuario.verde .icone-card-usuario {
+  background: #e2f7e7;
+}
+
+.card-usuario.verde a {
+  color: #078527;
+}
+
+.card-usuario.roxo .icone-card-usuario {
+  background: #eee6ff;
+}
+
+.card-usuario.roxo a {
+  color: #4f20e8;
+}
+
+/* =========================================
+   EMPRÉSTIMOS / DEVOLUÇÃO
+========================================= */
+
+.grade-usuario {
+  margin: 0 30px 20px;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr);
+
+  gap: 18px;
+}
+
+.caixa-usuario {
+  background: white;
+
+  border: 1px solid #e1e6ef;
+
+  border-radius: 12px;
+
+  padding: 22px;
+
+  min-width: 0;
+}
+
+.titulo-caixa-usuario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.titulo-caixa-usuario h2 {
+  margin: 0;
+
+  font-size: 19px;
+}
+
+.titulo-caixa-usuario a {
+  color: #0057e7;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: bold;
+}
+
+/* TABELA */
+
+.tabela-usuario {
+  overflow-x: auto;
+}
+
+.tabela-usuario table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.tabela-usuario th {
+  background: #f7f8fb;
+
+  text-align: left;
+
+  padding: 12px;
+
+  font-size: 12px;
+}
+
+.tabela-usuario td {
+  padding: 14px 12px;
+
+  border-bottom: 1px solid #e6e9ef;
+
+  font-size: 13px;
+}
+
+.livro-tabela {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.mini-capa {
+  width: 42px;
+  height: 55px;
+
+  background: #f0f0f0;
+
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 25px;
+}
+
+.livro-tabela > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.livro-tabela span {
+  color: #53627a;
+}
+
+/* STATUS */
+
+.status.ativo {
+  background: #ddf6e4;
+
+  color: #168638;
+
+  padding: 5px 13px;
+
+  border-radius: 15px;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   PRÓXIMA DEVOLUÇÃO
+========================================= */
+
+.conteudo-devolucao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 175px;
+}
+
+.conteudo-devolucao h3 {
+  margin: 0 0 5px;
+
+  font-size: 20px;
+}
+
+.conteudo-devolucao p {
+  margin: 0 0 20px;
+
+  color: #53627a;
+}
+
+.conteudo-devolucao > div:first-child > span {
+  display: block;
+
+  color: #53627a;
+
+  font-size: 13px;
+
+  margin-bottom: 5px;
+}
+
+.data-atraso {
+  display: block;
+
+  color: red;
+
+  margin-bottom: 22px;
+}
+
+.botao-meus-emprestimos {
+  display: inline-block;
+
+  padding: 11px 14px;
+
+  border-radius: 7px;
+
+  background: #f0eaff;
+
+  color: #3514d3;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: bold;
+}
+
+.icone-calendario-grande {
+  font-size: 80px;
+
+  padding: 20px;
+}
+
+/* =========================================
+   LIVROS EM DESTAQUE
+========================================= */
+
+.livros-destaque {
+  margin: 0 30px 30px;
+
+  padding: 22px;
+
+  background: white;
+
+  border: 1px solid #e1e6ef;
+
+  border-radius: 12px;
+}
+
+.lista-livros-destaque {
+  display: grid;
+
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.livro-destaque {
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.capa-destaque {
+  width: 120px;
+  height: 165px;
+
+  background: #f0f1f5;
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 65px;
+
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.livro-destaque strong {
+  font-size: 13px;
+}
+
+.livro-destaque span {
+  font-size: 12px;
+
+  color: #53627a;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1200px) {
+  .cards-usuario {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grade-usuario {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-livros-destaque {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .menu-usuario {
+    position: static;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .painel-usuario {
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  .cards-usuario {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-livros-destaque {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .banner-usuario {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .desenho-banner {
+    display: none;
+  }
+}
+/* =========================================
+   MEU PERFIL - USUÁRIO
+========================================= */
+
+.area-perfil-usuario {
+  margin: 0 30px 30px;
+
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+
+  gap: 20px;
+}
+
+.cartao-perfil-usuario {
+  background: white;
+
+  border: 1px solid #e1e6ef;
+  border-radius: 12px;
+
+  padding: 28px 22px;
+
+  text-align: center;
+}
+
+.avatar-perfil-grande {
+  width: 95px;
+  height: 95px;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: #e8f0ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 45px;
+}
+
+.cartao-perfil-usuario h2 {
+  margin: 0 0 12px;
+}
+
+.info-perfil-usuario {
+  margin-top: 25px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  text-align: left;
+}
+
+.info-perfil-usuario div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.info-perfil-usuario span {
+  color: #667085;
+
+  font-size: 12px;
+}
+
+.info-perfil-usuario strong {
+  font-size: 14px;
+}
+
+/* FORMULÁRIO */
+
+.form-perfil-usuario {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.form-perfil-usuario .campo input {
+  height: 43px;
+}
+
+.acoes-perfil {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+  .area-perfil-usuario {
+    grid-template-columns: 1fr;
+  }
+
+  .form-perfil-usuario {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================
+   LOGIN COM FOTO
+========================================= */
+
+
+.pagina-login-foto {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   LAYOUT
+========================================= */
+
+.login-foto-layout {
+  width: 100vw;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  /* FOTO NA TELA TODA + ESCURECIMENTO */
+  background-image:
+    linear-gradient(
+      rgba(4, 16, 34, 0.55),
+      rgba(4, 16, 34, 0.55)
+    ),
+    url("../img/fundo.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* =========================================
+   LADO ESQUERDO
+========================================= */
+
+.login-foto-apresentacao {
+  position: relative;
+  min-height: 100vh;
+
+  background: transparent;
+
+  color: white;
+  overflow: hidden;
+}
+
+
+/* NÃO PRECISA DO OVERLAY SEPARADO */
+.overlay-login {
+  display: none;
+}
+
+
+/* CONTEÚDO DA ESQUERDA */
+
+.conteudo-login-esquerda {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+
+  padding: 65px 65px 55px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================
+   MARCA
+========================================= */
+
+.marca-login-foto {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.icone-marca-login {
+  font-size: 55px;
+}
+
+.marca-login-foto h1 {
+  margin: 0;
+
+  font-size: 35px;
+  letter-spacing: 1px;
+}
+
+.marca-login-foto span {
+  display: block;
+
+  margin-top: 2px;
+
+  letter-spacing: 8px;
+
+  font-size: 17px;
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.texto-login-foto {
+  margin: auto 0;
+
+  max-width: 600px;
+}
+
+.texto-login-foto h2 {
+  margin: 0 0 25px;
+
+  font-size: 48px;
+
+  line-height: 1.15;
+}
+
+.texto-login-foto p {
+  margin: 0;
+
+  max-width: 450px;
+
+  font-size: 15px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   RECURSOS
+========================================= */
+
+.recursos-login-foto {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+.recursos-login-foto div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.recursos-login-foto span {
+  font-size: 34px;
+}
+
+.recursos-login-foto strong {
+  font-size: 16px;
+}
+
+.recursos-login-foto p {
+  margin: 0;
+
+  color: #ecf1f7;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ÁREA DIREITA
+========================================= */
+
+.area-login-foto {
+  min-height: 100vh;
+
+  padding: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* TRANSPARENTE PARA APARECER A FOTO ATRÁS */
+  background: transparent;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card-login-foto {
+  width: 100%;
+  max-width: 560px;
+
+  padding: 50px 48px;
+
+  background: white;
+
+  border-radius: 28px;
+
+  box-shadow: 0 20px 60px rgba(20, 30, 50, 0.1);
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-login-foto {
+  margin-bottom: 35px;
+
+  text-align: center;
+}
+
+.cabecalho-login-foto h2 {
+  margin: 0 0 15px;
+
+  font-size: 34px;
+}
+
+.cabecalho-login-foto p {
+  margin: 0;
+
+  color: #5d6470;
+
+  font-size: 16px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+#formLogin {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+
+/* =========================================
+   CAMPO
+========================================= */
+
+.campo-login-foto {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.campo-login-foto label {
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-login-foto {
+  width: 100%;
+
+  height: 56px;
+
+  padding: 0 15px;
+
+  border: 1px solid #d5d9df;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  background: white;
+}
+
+.input-login-foto:focus-within {
+  border-color: #2864e8;
+
+  box-shadow: 0 0 0 3px rgba(40, 100, 232, 0.1);
+}
+
+.input-login-foto input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  font-size: 16px;
+}
+
+.input-login-foto input::placeholder {
+  color: #8d939c;
+}
+
+
+/* =========================================
+   MOSTRAR SENHA
+========================================= */
+
+.mostrar-senha {
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+
+/* =========================================
+   OPÇÕES
+========================================= */
+
+.opcoes-login-foto {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.lembrar-login {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #5b6270;
+
+  font-size: 14px;
+}
+
+.opcoes-login-foto a {
+  color: #1760c2;
+
+  font-size: 14px;
+
+  text-decoration: none;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.botao-login-foto {
+  width: 100%;
+
+  height: 58px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: linear-gradient(
+    90deg,
+    #1760c2,
+    #286ee0
+  );
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.botao-login-foto:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 8px 18px rgba(23, 96, 194, 0.25);
+}
+
+
+/* =========================================
+   DIVISOR
+========================================= */
+
+.divisor-login-foto {
+  margin: 30px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.divisor-login-foto span {
+  flex: 1;
+
+  height: 1px;
+
+  background: #dfe3e8;
+}
+
+.divisor-login-foto p {
+  margin: 0;
+
+  color: #737b87;
+}
+
+
+/* =========================================
+   CADASTRO
+========================================= */
+
+.cadastro-login-foto {
+  margin: 32px 0 0;
+
+  text-align: center;
+
+  color: #565e6a;
+
+  font-size: 15px;
+}
+
+.cadastro-login-foto a {
+  color: #1760c2;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .login-foto-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .login-foto-apresentacao {
+    position: relative;
+
+    min-height: 100vh;
+
+    background: transparent;
+
+    color: white;
+
+    overflow: hidden;
+  }
+
+  .area-login-foto {
+    min-height: 100vh;
+
+    padding: 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: transparent;
+  }
+
+  .card-login-foto {
+    max-width: 520px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .area-login-foto {
+    padding: 16px;
+  }
+
+  .card-login-foto {
+    padding: 35px 25px;
+
+    border-radius: 18px;
+  }
+
+  .cabecalho-login-foto h2 {
+    font-size: 28px;
+  }
+
+  .opcoes-login-foto {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+/* =========================================
+   CADASTRO COM FOTO - IGUAL AO LOGIN
+========================================= */
+
+.pagina-cadastro-foto {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   LAYOUT
+========================================= */
+
+.cadastro-foto-layout {
+  width: 100vw;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  /* FOTO NA TELA TODA + ESCURECIMENTO */
+  background-image:
+    linear-gradient(
+      rgba(4, 16, 34, 0.55),
+      rgba(4, 16, 34, 0.55)
+    ),
+    url("../img/fundo.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* =========================================
+   LADO ESQUERDO
+========================================= */
+
+.cadastro-apresentacao {
+  position: relative;
+  min-height: 100vh;
+
+  background: transparent;
+
+  color: white;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   CONTEÚDO ESQUERDO
+========================================= */
+
+.conteudo-cadastro-esquerda {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+
+  padding: 65px 65px 55px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================
+   MARCA
+========================================= */
+
+.marca-cadastro {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.icone-marca-cadastro {
+  font-size: 55px;
+}
+
+.marca-cadastro h1 {
+  margin: 0;
+
+  font-size: 35px;
+  letter-spacing: 1px;
+}
+
+.marca-cadastro span {
+  display: block;
+
+  margin-top: 2px;
+
+  letter-spacing: 8px;
+
+  font-size: 17px;
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.texto-cadastro {
+  margin: auto 0;
+
+  max-width: 600px;
+}
+
+.texto-cadastro h2 {
+  margin: 0 0 25px;
+
+  font-size: 48px;
+  line-height: 1.15;
+}
+
+.texto-cadastro p {
+  margin: 0;
+
+  max-width: 450px;
+
+  font-size: 15px;
+  line-height: 1.4;
+
+  color: #eef3f8;
+}
+
+
+/* =========================================
+   RECURSOS
+========================================= */
+
+.recursos-cadastro {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+.recursos-cadastro div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.recursos-cadastro span {
+  font-size: 34px;
+}
+
+.recursos-cadastro strong {
+  font-size: 16px;
+}
+
+.recursos-cadastro p {
+  margin: 0;
+
+  color: #ecf1f7;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   LADO DIREITO
+========================================= */
+
+.area-cadastro-foto {
+  min-height: 100vh;
+
+  padding: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* FOTO CONTINUA ATRÁS */
+  background: transparent;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card-cadastro-foto {
+  width: 100%;
+  max-width: 620px;
+
+  padding: 38px 42px;
+
+  background: white;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(20, 30, 50, 0.10);
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-cadastro-foto {
+  margin-bottom: 25px;
+
+  text-align: center;
+}
+
+.cabecalho-cadastro-foto h2 {
+  margin: 0 0 10px;
+
+  font-size: 32px;
+}
+
+.cabecalho-cadastro-foto p {
+  margin: 0;
+
+  color: #667085;
+}
+
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+#formCadastro {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo-cadastro-foto {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.campo-cadastro-foto label {
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.input-cadastro-foto {
+  height: 50px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border: 1px solid #d5d9df;
+  border-radius: 8px;
+
+  background: white;
+}
+
+.input-cadastro-foto:focus-within {
+  border-color: #2864e8;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(40, 100, 232, 0.10);
+}
+
+.input-cadastro-foto input {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  font-size: 14px;
+}
+
+.input-cadastro-foto input::placeholder {
+  color: #98a2b3;
+}
+
+
+/* =========================================
+   TERMOS
+========================================= */
+
+.termos-cadastro {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #667085;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.botao-cadastro-foto {
+  grid-column: 1 / -1;
+
+  width: 100%;
+  height: 54px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1760c2,
+      #286ee0
+    );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.botao-cadastro-foto:hover {
+  box-shadow:
+    0 8px 18px
+    rgba(23, 96, 194, 0.25);
+}
+
+
+/* =========================================
+   LINK LOGIN
+========================================= */
+
+.login-cadastro-link {
+  margin: 25px 0 0;
+
+  text-align: center;
+
+  color: #667085;
+
+  font-size: 14px;
+}
+
+.login-cadastro-link a {
+  color: #1760c2;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .cadastro-foto-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cadastro-apresentacao {
+    display: none;
+  }
+
+  .area-cadastro-foto {
+    min-height: 100vh;
+
+    padding: 25px;
+
+    background: transparent;
+  }
+
+  .card-cadastro-foto {
+    max-width: 560px;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .area-cadastro-foto {
+    padding: 16px;
+  }
+
+  .card-cadastro-foto {
+    padding: 30px 22px;
+
+    border-radius: 18px;
+  }
+
+  #formCadastro {
+    grid-template-columns: 1fr;
+  }
+}/* =========================================
+   HOME PÚBLICA
+========================================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100%;
+}
+
+
+body.pagina-home-publica {
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  display: block;
+
+  overflow-x: hidden;
+
+  background: #f7f8fa;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #172033;
+}
+
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
+
+.home-conteudo {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: block;
+}
+
+
+/* =========================================
+   TOPO
+========================================= */
+
+.home-topo {
+  width: 100%;
+
+  min-height: 80px;
+
+  margin: 0;
+
+  padding: 0 5%;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  background: #03182d;
+
+  color: white;
+}
+
+
+/* LOGO */
+
+.home-logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
+  color: white;
+
+  text-decoration: none;
+}
+
+
+.home-logo-icone {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #164db8;
+
+  font-size: 24px;
+}
+
+
+.home-logo strong {
+  font-size: 21px;
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.home-menu {
+  display: flex;
+
+  align-items: center;
+
+  gap: 40px;
+}
+
+
+.home-menu a {
+  padding: 29px 0 25px;
+
+  border-bottom: 2px solid transparent;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 15px;
+}
+
+
+.home-menu a:hover,
+.home-menu a.ativo {
+  border-bottom-color: white;
+}
+
+
+/* =========================================
+   AÇÕES TOPO
+========================================= */
+
+.home-acoes {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+}
+
+
+.home-pesquisa-topo {
+  width: 250px;
+  height: 42px;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: 1px solid #23425f;
+
+  border-radius: 22px;
+}
+
+
+.home-pesquisa-topo input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 13px;
+}
+
+
+.home-pesquisa-topo input::placeholder {
+  color: #aab7c5;
+}
+
+
+.home-entrar,
+.home-criar-conta {
+  padding: 12px 20px;
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.home-entrar {
+  border: 1px solid white;
+
+  color: white;
+}
+
+
+.home-criar-conta {
+  background: #1555c6;
+
+  color: white;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.home-hero {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 510px;
+
+  margin: 0;
+
+  padding: 60px 7%;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.4fr)
+    minmax(320px, 0.6fr);
+
+  align-items: center;
+
+  gap: 70px;
+
+  background:
+    url("../img/fundo.png")
+    center / cover
+    no-repeat;
+
+  overflow: hidden;
+}
+
+
+.home-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    rgba(
+      3,
+      19,
+      36,
+      0.68
+    );
+}
+
+
+/* =========================================
+   TEXTO HERO
+========================================= */
+
+.home-hero-conteudo {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 760px;
+
+  color: white;
+}
+
+
+.home-hero-conteudo h1 {
+  margin: 0 0 20px;
+
+  font-size: 50px;
+
+  line-height: 1.08;
+}
+
+
+.home-hero-conteudo > p {
+  max-width: 580px;
+
+  margin: 0 0 28px;
+
+  color: #edf3fa;
+
+  font-size: 19px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   PESQUISA HERO
+========================================= */
+
+.home-pesquisa {
+  width: 100%;
+
+  max-width: 620px;
+
+  height: 54px;
+
+  margin-bottom: 55px;
+
+  display: flex;
+}
+
+
+.home-pesquisa input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 8px 0 0 8px;
+
+  outline: none;
+
+  font-size: 15px;
+}
+
+
+.home-pesquisa button {
+  width: 58px;
+
+  border: none;
+
+  border-radius: 0 8px 8px 0;
+
+  background: #1555c6;
+
+  color: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   BENEFÍCIOS
+========================================= */
+
+.home-beneficios {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 45px;
+}
+
+
+.home-beneficio {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.beneficio-icone {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #1656c9;
+
+  font-size: 22px;
+}
+
+
+.home-beneficio div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.home-beneficio strong {
+  font-size: 14px;
+}
+
+
+.home-beneficio span {
+  color: #dbe5ef;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   CARD ACESSO
+========================================= */
+
+.home-card-acesso {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 355px;
+
+  justify-self: end;
+
+  padding: 38px 30px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.97
+    );
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0, 0, 0, 0.20);
+}
+
+
+.home-card-ilustracao {
+  font-size: 65px;
+}
+
+
+.home-card-acesso h2 {
+  margin: 15px 0 10px;
+
+  color: #172033;
+
+  font-size: 24px;
+}
+
+
+.home-card-acesso p {
+  margin: 0 0 25px;
+
+  color: #505866;
+
+  line-height: 1.5;
+}
+
+
+.home-card-entrar,
+.home-card-cadastro {
+  display: block;
+
+  padding: 14px;
+
+  border-radius: 5px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+
+.home-card-entrar {
+  margin-bottom: 10px;
+
+  background: #1555c6;
+
+  color: white;
+}
+
+
+.home-card-cadastro {
+  border: 1px solid #1555c6;
+
+  background: white;
+
+  color: #1555c6;
+}
+
+
+/* =========================================
+   LIVROS
+========================================= */
+
+.home-livros {
+  width: 100%;
+
+  margin: 0;
+
+  padding: 40px 7% 60px;
+
+  box-sizing: border-box;
+
+  background: #f8f9fb;
+}
+
+
+.home-livros-topo {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+
+.home-livros-topo h2 {
+  margin: 0;
+
+  font-size: 23px;
+}
+
+
+.home-livros-topo a {
+  color: #1555c6;
+
+  text-decoration: none;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   GRID DOS LIVROS
+========================================= */
+
+.home-grid-livros {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+
+/* =========================================
+   CARD DOS LIVROS
+========================================= */
+
+.home-card-livros {
+  width: 100%;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: white;
+
+  border-radius: 8px;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 4px 15px
+    rgba(20, 30, 50, 0.08);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+
+.home-card-livros:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(20, 30, 50, 0.15);
+}
+
+
+/* =========================================
+   CAPAS
+========================================= */
+
+.home-capa-livros {
+  width: 100%;
+
+  height: 220px;
+
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+
+
+.capa-1 {
+  background: #172033;
+
+  color: #d2a44f;
+}
+
+
+.capa-2 {
+  background: #251c1c;
+
+  color: #b73e34;
+
+  font-size: 50px;
+}
+
+
+.capa-3 {
+  background: #e6dac0;
+
+  color: #211b15;
+
+  font-family:
+    Georgia,
+    serif;
+}
+
+
+.capa-4 {
+  background: #0a2742;
+
+  color: #e3b944;
+}
+
+
+.capa-5 {
+  background: #10214a;
+
+  color: #e8c640;
+}
+
+
+.capa-6 {
+  background: #ce462e;
+
+  color: #111;
+}
+
+
+/* =========================================
+   INFO DOS LIVROS
+========================================= */
+
+.home-info-livros {
+  padding: 16px;
+}
+
+
+.home-info-livros h3 {
+  min-height: 40px;
+
+  margin: 0 0 8px;
+
+  font-size: 15px;
+
+  line-height: 1.3;
+}
+
+
+.home-info-livros p {
+  margin: 0 0 18px;
+
+  color: #596170;
+
+  font-size: 13px;
+}
+
+
+.home-info-livros span {
+  display: inline-block;
+
+  padding: 5px 9px;
+
+  border-radius: 15px;
+
+  background: #e1f6e6;
+
+  color: #25803e;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1250px) {
+
+  .home-menu {
+    gap: 22px;
+  }
+
+
+  .home-pesquisa-topo {
+    width: 190px;
+  }
+
+
+  .home-grid-livros {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+}
+
+
+@media (max-width: 950px) {
+
+  .home-menu {
+    display: none;
+  }
+
+
+  .home-pesquisa-topo {
+    display: none;
+  }
+
+
+  .home-hero {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+
+  .home-card-acesso {
+    justify-self: start;
+
+    max-width: 430px;
+  }
+
+
+  .home-grid-livros {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .home-topo {
+    padding: 15px 20px;
+  }
+
+
+  .home-logo strong {
+    font-size: 17px;
+  }
+
+
+  .home-acoes {
+    gap: 7px;
+  }
+
+
+  .home-entrar,
+  .home-criar-conta {
+    padding: 10px 12px;
+
+    font-size: 12px;
+  }
+
+
+  .home-hero {
+    padding: 45px 22px;
+  }
+
+
+  .home-hero-conteudo h1 {
+    font-size: 38px;
+  }
+
+
+  .home-hero-conteudo > p {
+    font-size: 16px;
+  }
+
+
+  .home-beneficios {
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+
+  .home-card-acesso {
+    max-width: 100%;
+  }
+
+
+  .home-livros {
+    padding: 35px 22px 50px;
+  }
+
+
+  .home-grid-livros {
+    grid-template-columns: 1fr;
+  }
+
+
+  .home-capa-livros {
+    height: 280px;
+  }
+
+}/* FOTO DE PERFIL */
+
+.area-foto-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 18px;
+}
+
+.label-foto-perfil {
+  display: block;
+  width: 100px;
+  height: 100px;
+
+  cursor: pointer;
+}
+
+.avatar-perfil-grande {
+  width: 100px !important;
+  height: 100px !important;
+
+  min-width: 100px;
+  min-height: 100px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e8effc;
+}
+
+.avatar-perfil-grande img {
+  width: 100% !important;
+  height: 100% !important;
+
+  max-width: 100px !important;
+  max-height: 100px !important;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  display: block;
+}
+
+#fotoPerfil {
+  width: 100px !important;
+  height: 100px !important;
+
+  object-fit: cover !important;
+
+  border-radius: 50% !important;
+}
+
+#iconePerfilPadrao {
+  font-size: 50px;
+}
+
+.botao-alterar-foto {
+  margin-top: 4px;
+
+  padding: 6px 12px;
+
+  cursor: pointer;
+}.avatar-usuario {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: white;
+}
+
+.avatar-usuario img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+#iconeUsuarioMenu {
+  font-size: 22px;
+}/* =========================================
+   CONFIGURAÇÕES ADMIN
+========================================= */
+
+.config-abas {
+  margin: 0 30px 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #dfe5ee;
+  border-radius: 10px;
+
+  padding: 8px 14px;
+
+  overflow-x: auto;
+}
+
+.config-aba {
+  background: transparent;
+
+  border: none;
+  border-bottom: 3px solid transparent;
+
+  padding: 13px 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #667085;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.config-aba:hover {
+  color: #2563eb;
+}
+
+.config-aba.ativa {
+  color: #2563eb;
+
+  border-bottom-color: #2563eb;
+}
+
+
+/* =========================================
+   ÁREA DAS CONFIGURAÇÕES
+========================================= */
+
+.config-area {
+  margin: 0 30px 30px;
+}
+
+.config-caixa {
+  padding: 24px;
+}
+
+
+/* =========================================
+   ABAS - CONTEÚDO
+========================================= */
+
+.config-conteudo {
+  display: none;
+}
+
+.config-conteudo.ativo {
+  display: block;
+}
+
+
+/* =========================================
+   FORMULÁRIOS
+========================================= */
+
+.config-caixa form {
+  margin-top: 20px;
+}
+
+.config-caixa .campo {
+  margin-bottom: 18px;
+}
+
+.config-caixa .campo label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #101828;
+}
+
+.config-caixa .campo input,
+.config-caixa .campo textarea,
+.config-caixa .campo select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 13px;
+
+  border: 1px solid #d5dce6;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #101828;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.config-caixa .campo textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.config-caixa .campo input:focus,
+.config-caixa .campo textarea:focus,
+.config-caixa .campo select:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
+}
+
+.config-caixa .campo small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #667085;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   CAMPOS EM DUAS COLUNAS
+========================================= */
+
+.config-linha {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================
+   SWITCH
+========================================= */
+
+.config-switch-box {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding: 18px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #e1e6ee;
+  border-radius: 9px;
+
+  background: #f9fafb;
+}
+
+.config-switch-box > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.config-switch-box strong {
+  font-size: 14px;
+
+  color: #101828;
+}
+
+.config-switch-box span {
+  font-size: 12px;
+
+  color: #667085;
+}
+
+
+/* SWITCH VISUAL */
+
+.switch-config {
+  position: relative;
+
+  display: inline-block;
+
+  width: 46px;
+  min-width: 46px;
+
+  height: 24px;
+
+  cursor: pointer;
+}
+
+.switch-config input {
+  opacity: 0;
+
+  width: 0;
+  height: 0;
+}
+
+.slider-config {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: #cbd5e1;
+
+  border-radius: 30px;
+
+  transition: 0.25s;
+}
+
+.slider-config::before {
+  content: "";
+
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  left: 3px;
+  top: 3px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  box-shadow: 0 1px 4px rgb(0 0 0 / 25%);
+
+  transition: 0.25s;
+}
+
+.switch-config input:checked + .slider-config {
+  background: #2563eb;
+}
+
+.switch-config input:checked + .slider-config::before {
+  transform: translateX(22px);
+}
+
+
+/* =========================================
+   BOTÃO SALVAR
+========================================= */
+
+.config-acoes {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 25px;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 900px) {
+  .config-linha {
+    grid-template-columns: 1fr;
+  }
+
+  .config-switch-box {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .config-abas {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .config-area {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .config-caixa {
+    padding: 18px;
+  }
+
+  .config-aba {
+    padding: 11px 14px;
+  }
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .relatorio-filtros-grade {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .relatorio-cards {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .relatorio-grade {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .relatorio-filtros-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .relatorio-cards {
+    grid-template-columns: 1fr;
+  }
+
+}/* =========================================
+   FILTROS DOS RELATÓRIOS
+========================================= */
+
+.relatorio-filtros {
+  padding: 24px;
+}
+
+.relatorio-filtros h2 {
+  margin: 0 0 22px;
+  font-size: 22px;
+}
+
+
+/* GRADE DOS CAMPOS */
+
+.relatorio-filtros-grade {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr))
+    auto;
+
+  gap: 16px;
+
+  align-items: end;
+}
+
+
+/* CADA CAMPO */
+
+.relatorio-filtros-grade .campo {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  min-width: 0;
+}
+
+
+/* LABEL */
+
+.relatorio-filtros-grade .campo label {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #172033;
+}
+
+
+/* INPUT E SELECT */
+
+.relatorio-filtros-grade .campo input,
+.relatorio-filtros-grade .campo select {
+  width: 100%;
+
+  height: 44px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+
+/* SELECT */
+
+.relatorio-filtros-grade .campo select {
+  cursor: pointer;
+}
+
+
+/* FOCO */
+
+.relatorio-filtros-grade .campo input:focus,
+.relatorio-filtros-grade .campo select:focus {
+  border-color: #2864e8;
+
+  box-shadow:
+    0 0 0 3px rgba(40, 100, 232, 0.1);
+}
+
+
+/* BOTÃO GERAR */
+
+.relatorio-botao-filtro {
+  display: flex;
+
+  align-items: flex-end;
+}
+
+.relatorio-botao-filtro .botao-principal {
+  height: 44px;
+
+  padding: 0 18px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .relatorio-filtros-grade {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .relatorio-botao-filtro {
+    grid-column: 1 / -1;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .relatorio-filtros-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .relatorio-botao-filtro {
+    grid-column: auto;
+  }
+
+}/* =========================================
+   NOVO LIVRO - ADMIN
+========================================= */
+
+.novo-livro-topo {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin: 30px;
+}
+
+.novo-livro-topo h1 {
+  margin: 0 0 7px;
+
+  font-size: 28px;
+
+  color: #101828;
+}
+
+.novo-livro-topo p {
+  margin: 0;
+
+  color: #667085;
+
+  font-size: 14px;
+}
+
+
+/* VOLTAR */
+
+.botao-voltar-livros {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 11px 18px;
+
+  border: 1px solid #d8dee8;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #344054;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.botao-voltar-livros:hover {
+  background: #f7f9fc;
+}
+
+
+/* CAIXA */
+
+.novo-livro-caixa {
+  margin: 0 30px 30px;
+
+  padding: 28px;
+}
+
+
+/* TÍTULO DA CAIXA */
+
+.novo-livro-titulo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding-bottom: 18px;
+
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid #e5e9f0;
+}
+
+.novo-livro-titulo span {
+  font-size: 22px;
+}
+
+.novo-livro-titulo h2 {
+  margin: 0;
+
+  font-size: 18px;
+
+  color: #2563eb;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.novo-livro-grade {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo-novo-livro {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.campo-novo-livro label {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #1f2937;
+}
+
+.campo-novo-livro input,
+.campo-novo-livro select,
+.campo-novo-livro textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 13px;
+
+  border: 1px solid #d5dce6;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #101828;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.campo-novo-livro input,
+.campo-novo-livro select {
+  height: 44px;
+}
+
+.campo-novo-livro textarea {
+  resize: vertical;
+
+  min-height: 110px;
+}
+
+.campo-novo-livro input:focus,
+.campo-novo-livro select:focus,
+.campo-novo-livro textarea:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.campo-novo-livro small {
+  font-size: 12px;
+
+  color: #667085;
+}
+
+
+/* DESCRIÇÃO */
+
+.campo-novo-livro-grande {
+  margin-top: 20px;
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.novo-livro-acoes {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  padding-top: 25px;
+
+  margin-top: 25px;
+
+  border-top: 1px solid #e5e9f0;
+}
+
+.botao-limpar-livro {
+  padding: 11px 20px;
+
+  border: 1px solid #d5dce6;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #344054;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.botao-limpar-livro:hover {
+  background: #f7f9fc;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 850px) {
+
+  .novo-livro-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .novo-livro-topo {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .novo-livro-topo,
+  .novo-livro-caixa {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .novo-livro-caixa {
+    padding: 20px;
+  }
+
+  .novo-livro-acoes {
+    flex-direction: column;
+  }
+
+  .novo-livro-acoes button {
+    width: 100%;
+  }
+
+}
+.sair-usuario {
+    background: none;
+    border: none;
+    padding: 0;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+/* AÇÕES DA FOTO DE PERFIL */
+
+.acoes-foto-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+/* BOTÃO ALTERAR FOTO */
+
+.botao-alterar-foto {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+
+    background: #e8f0ff;
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.botao-alterar-foto:hover {
+    background: #dbe7ff;
+}
+
+
+/* BOTÃO REMOVER FOTO */
+
+.botao-remover-foto {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+
+    background: #fee2e2;
+    color: #dc2626;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.botao-remover-foto:hover {
+    background: #fecaca;
+}
+
+.botao-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    background: white;
+    color: #344054;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.botao-secundario:hover {
+    background: #f2f4f7;
+}
+
+
+
+/* BOTÃO RESERVAR */
+
+.botao-reservar {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #6c63ff;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-reservar:hover {
+    opacity: 0.9;
+}
+/* LIVROS EM DESTAQUE */
+
+.home-grid-livros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 25px;
+}
+
+.home-card-livro {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 22px;
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.home-card-livro:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.home-card-livro-icone {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eaf2ff;
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+.home-card-livro h3 {
+    margin: 0;
+
+    color: #0f2747;
+
+    font-size: 19px;
+}
+
+.home-card-livro p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+.home-card-livro span {
+    color: #475569;
+
+    font-size: 13px;
+}
+
+.home-card-livro strong {
+    margin-top: auto;
+
+    color: #15803d;
+
+    font-size: 14px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 1000px) {
+
+    .home-grid-livros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .home-grid-livros {
+        grid-template-columns: 1fr;
+    }
+}

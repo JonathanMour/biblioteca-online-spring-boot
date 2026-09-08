@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    />
+    <title>Livros - Sistema Biblioteca</title>
+
+    <link
+            rel="icon"
+            type="image/png"
+            href="/img/icon.png"
+    />
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    />
+</head>
+<body>
+
+<!--  MENU LATERAL-->
+
+<aside class="menu-usuario">
+
+
+    <div class="logo-usuario">
+
+        <h1>
+            📖 Biblioteca
+        </h1>
+
+        <span>
+          ONLINE
+        </span>
+
+    </div>
+
+    <nav class="menu-links-usuario">
+
+        <!-- INÍCIO -->
+        <a href="/usuario">
+            🏠 Início
+        </a>
+
+        <!-- LIVROS -->
+
+        <a
+                href="/usuario/livros"
+                class="ativo"
+        >
+            📖 Livros
+        </a>
+
+        <!-- EMPRÉSTIMOS -->
+
+        <a href="meus-emprestimos.html">
+            📋 Meus Empréstimos
+        </a>
+
+        <!-- DEVOLUÇÕES -->
+
+        <a href="minhas-devolucoes.html">
+            ↪ Minhas Devoluções
+        </a>
+
+
+        <!-- PERFIL -->
+
+        <a href="meu-perfil.html">
+            👤 Meu Perfil
+        </a>
+
+
+    </nav>
+
+
+    <!-- USUÁRIO NO FINAL DO MENU-->
+
+    <div class="rodape-usuario">
+
+
+        <div class="dados-usuario">
+
+
+            <div class="avatar-usuario">
+
+                <img
+                        id="fotoUsuarioMenu"
+                        alt="Foto do usuário"
+                        style="display: none"
+                />
+
+                <span id="iconeUsuarioMenu">
+              👤
+            </span>
+
+            </div>
+
+            <div>
+
+                <strong id="nomeUsuarioMenu">
+                    Usuário
+                </strong>
+
+                <span id="emailUsuarioMenu">
+              usuario@email.com
+            </span>
+
+            </div>
+
+
+        </div>
+
+        <!-- SAIR -->
+
+    </div>
+    <form action="/logout" method="post" class="form-logout">
+        <button type="submit" class="sair-usuario">
+            🚪 Sair
+        </button>
+    </form>
+    </div>
+
+
+    </div>
+
+</aside>
+
+
+<!--  CONTEÚDO PRINCIPAL -->
+<main class="painel-usuario">
+
+
+    <!--  CABEÇALHO-->
+
+    <header class="topo-usuario">
+
+        <div class="titulo-usuario"></div>
+        <div class="usuario-topo">
+            <button
+                    type="button"
+                    class="botao-notificacao"
+            >
+                🔔
+            </button>
+        </div>
+    </header>
+
+    <!--  BANNER-->
+
+    <section class="banner-usuario">
+        <div class="banner-conteudo-usuario">
+            <div class="icone-boas-vindas">
+                📚
+            </div>
+
+            <div>
+                <h1>
+                    Catálogo de Livros
+                </h1>
+                <p>
+                    Consulte os livros disponíveis na biblioteca.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="desenho-banner">
+            📚
+        </div>
+
+    </section>
+
+    <!--  CARDS -->
+
+    <section class="cards-usuario">
+
+
+        <!-- LIVROS DISPONÍVEIS-->
+
+        <article class="card-usuario roxo">
+
+            <div class="icone-card-usuario">
+                📚
+            </div>
+
+            <div>
+                <strong id="quantidadeLivrosDisponiveis">
+                    0
+                </strong>
+
+                <span>
+              Livros Disponíveis
+            </span>
+                <a href="#livros">
+                    Ver todos →
+                </a>
+            </div>
+
+        </article>
+
+
+        <!-- EMPRÉSTIMOS ATIVOS -->
+
+        <article class="card-usuario azul">
+
+            <div class="icone-card-usuario">
+                📖
+            </div>
+
+            <div>
+                <strong id="quantidadeEmprestimosAtivos">
+                    0
+                </strong>
+                <span>
+              Empréstimos Ativos
+            </span>
+
+                <a href="meus-emprestimos.html">
+                    Ver empréstimos →
+                </a>
+
+            </div>
+        </article>
+
+        <!--  DEVOLUÇÕES REALIZADAS -->
+
+        <article class="card-usuario verde">
+
+            <div class="icone-card-usuario">
+                ✓
+            </div>
+
+            <div>
+                <strong id="quantidadeDevolucoesRealizadas">
+                    0
+                </strong>
+
+                <span>
+              Devoluções Realizadas
+            </span>
+
+                <a href="minhas-devolucoes.html">
+                    Ver devoluções →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PERFIL-->
+        <article class="card-usuario laranja">
+
+            <div class="icone-card-usuario">
+                👤
+            </div>
+            <div>
+                <strong id="nomeUsuarioCard">
+                    Usuário
+                </strong>
+
+                <span>
+              Meu Perfil
+            </span>
+
+                <a href="meu-perfil.html">
+                    Ver perfil →
+                </a>
+            </div>
+
+        </article>
+
+
+    </section>
+
+    <!-- CATÁLOGO DE LIVROS-->
+    <section
+            class="caixa-usuario"
+            id="livros"
+            style="margin: 0 30px 30px"
+    >
+        <!-- TÍTULO -->
+
+        <div class="titulo-caixa-usuario">
+            <div>
+                <h2>
+                    Livros disponíveis
+                </h2>
+                <p>
+                    Pesquise pelo catálogo da biblioteca.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PESQUISA -->
+        <form
+                class="pesquisa-livros"
+                id="formPesquisa"
+        >
+            <label
+                    for="pesquisaLivro"
+                    class="label-oculta"
+            >
+                Pesquisar por título, autor ou gênero
+            </label>
+
+            <input
+                    type="text"
+                    id="pesquisaLivro"
+                    placeholder="Pesquisar por título, autor ou gênero"
+            />
+            <button
+                    type="submit"
+                    class="botao-principal"
+            >
+                Pesquisar
+            </button>
+        </form>
+        <!--   TABELA DE LIVROS-->
+
+        <div class="tabela-responsiva">
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Capa</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Gênero</th>
+                    <th>Disponíveis</th>
+                    <th>Ação</th>
+                </tr>
+                </thead>
+                <tbody id="corpoTabelaLivros">
+                </tbody>
+            </table>
+        </div>
+        <!--  PAGINAÇÃO -->
+        <div class="rodape-tabela">
+            <p id="textoPaginacao">
+                Mostrando 0 livros
+            </p>
+            <div
+                    class="paginacao"
+                    id="paginacaoLivros"
+            >
+            </div>
+        </div>
+    </section>
+</main>
+<script src="/js/script.js"></script>
+</body>
+</html>

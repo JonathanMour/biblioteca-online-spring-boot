@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Login - Biblioteca</title>
+
+    <link
+            rel="icon"
+            type="image/png"
+            href="/img/icon.png"
+    />
+
+    <link
+            rel="stylesheet"
+            href="/css/style.css"
+    />
+</head>
+
+
+<body class="pagina-login-foto">
+
+<main class="login-foto-layout">
+
+
+    <!-- =========================================
+         LADO ESQUERDO
+    ========================================== -->
+
+    <section class="login-foto-apresentacao">
+
+        <div class="overlay-login"></div>
+
+
+        <div class="conteudo-login-esquerda">
+
+
+            <!-- MARCA -->
+
+            <div class="marca-login-foto">
+
+                <div class="icone-marca-login"></div>
+
+                <div>
+
+                    <h1>
+                        📖 Biblioteca
+                    </h1>
+
+                    <span>
+                        Online
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- TEXTO -->
+
+            <div class="texto-login-foto">
+
+                <h2>
+                    Sua biblioteca,
+                    <br />
+                    simples e organizada.
+                </h2>
+
+                <p>
+                    Consulte livros, acompanhe empréstimos
+                    e gerencie todas as informações em um só lugar.
+                </p>
+
+            </div>
+
+
+            <!-- RECURSOS -->
+
+            <div class="recursos-login-foto">
+
+                <div>
+
+                    <span>📖</span>
+
+                    <strong>
+                        Catálogo
+                    </strong>
+
+                    <p>
+                        de livros
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>📋</span>
+
+                    <strong>
+                        Controle de
+                    </strong>
+
+                    <p>
+                        empréstimos
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>↪️</span>
+
+                    <strong>
+                        Acompanhamento
+                    </strong>
+
+                    <p>
+                        de devoluções
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         LADO DIREITO
+    ========================================== -->
+
+    <section class="area-login-foto">
+
+        <div class="card-login-foto">
+
+
+            <!-- CABEÇALHO -->
+
+            <div class="cabecalho-login-foto">
+
+                <h2>
+                    Bem-vindo de volta!
+                </h2>
+
+                <p>
+                    Informe seu e-mail e senha para acessar o sistema.
+                </p>
+
+            </div>
+
+
+            <!--FORMULÁRIO DE LOGINn -->
+
+            <form
+                    id="formLogin"
+                    action="/login"
+                    method="post"
+            >
+
+                <!-- EMAIL -->
+
+                <div class="campo-login-foto">
+
+                    <label for="emailLogin">
+                        E-mail
+                    </label>
+
+                    <div class="input-login-foto">
+                        <span>
+                            ✉️
+                        </span>
+                        <input
+                                type="email"
+                                id="emailLogin"
+                                name="email"
+                                placeholder="seuemail@exemplo.com"
+                                autocomplete="email"
+                                required
+                        />
+                    </div>
+                </div>
+                <!-- SENHA -->
+                <div class="campo-login-foto">
+
+                    <label for="senhaLogin">
+                        Senha
+                    </label>
+                    <div class="input-login-foto">
+                        <span>
+                            🔒
+                        </span>
+                        <input
+                                type="password"
+                                id="senhaLogin"
+                                name="senha"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                required
+                        />
+                        <button
+                                type="button"
+                                class="mostrar-senha"
+                                id="mostrarSenha"
+                        >
+                            👁
+                        </button>
+                    </div>
+                </div>
+                <!-- OPÇÕES-->
+
+                <div class="opcoes-login-foto">
+
+                    <label class="lembrar-login">
+
+                        <input type="checkbox" />
+
+                        <span>
+                            Lembrar de mim
+                        </span>
+                    </label>
+                    <a href="#">
+                        Esqueci minha senha
+                    </a>
+                </div>
+                <!-- ENTRAR-->
+
+                <button
+                        type="submit"
+                        class="botao-login-foto"
+                >
+                    Entrar
+                </button>
+            </form>
+
+            <!--  DIVISOR -->
+
+            <div class="divisor-login-foto">
+
+                <span></span>
+                <p>
+                    ou
+                </p>
+                <span></span>
+            </div>
+            <!--CADASTRO-->
+            <p class="cadastro-login-foto">
+                Ainda não tem uma conta?
+                <a href="/cadastro">
+                    Criar conta
+                </a>
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

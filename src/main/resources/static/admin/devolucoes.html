@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Devoluções - Biblioteca</title>
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+    
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+         MENU LATERAL ADMIN
+    ========================================== -->
+
+    <aside class="menu-admin">
+      <div class="logo-admin">
+        <h1>📖 Biblioteca</h1>
+        <span>ONLINE</span>
+      </div>
+
+      <nav class="menu-links">
+        <a href="index.html">
+          🏠 Início
+        </a>
+
+        <a href="usuarios.html">
+          👥 Usuários
+        </a>
+
+        <a href="/admin/livros">
+          📚 Livros
+        </a>
+
+        <a href="/admin/emprestimos.html">
+          📖 Empréstimos
+        </a>
+
+        <a
+          href="/admin/devolucoes.html"
+          class="ativo"
+        >
+          ↩️ Devoluções
+        </a>
+
+        <a href="/admin/relatorio.html">
+          📊 Relatórios
+        </a>
+
+          <a href="/admin/configurações.html"> ⚙️ Configurações </a>
+        </a>
+      </nav>
+
+      <!-- =========================================
+           ADMINISTRADOR
+      ========================================== -->
+
+      <div class="admin-rodape">
+        <div class="admin-info">
+          <div class="avatar-admin">
+            👤
+          </div>
+
+          <div>
+            <strong id="nomeAdminMenu">
+              Administrador
+            </strong>
+
+            <span id="emailAdminMenu">
+              admin@biblioteca.com
+            </span>
+          </div>
+        </div>
+
+        <a
+          href="../login.html"
+          class="botao-sair"
+        >
+          🚪 Sair
+        </a>
+      </div>
+    </aside>
+
+    <!-- =========================================
+         CONTEÚDO PRINCIPAL
+    ========================================== -->
+
+    <main class="painel-admin">
+      <!-- =========================================
+           CABEÇALHO
+      ========================================== -->
+
+      <header class="topo-admin">
+        <div class="titulo-topo">
+          <button
+            type="button"
+            class="botao-menu"
+            aria-label="Abrir menu"
+          >
+            ☰
+          </button>
+
+          <h2>
+            Devoluções
+          </h2>
+        </div>
+
+        <div class="usuario-topo">
+          <button
+            type="button"
+            class="botao-notificacao"
+            aria-label="Notificações"
+          >
+            🔔
+          </button>
+
+          <span id="usuarioLogado">
+            Administrador
+          </span>
+        </div>
+      </header>
+
+      <!-- =========================================
+           ÁREA DE DEVOLUÇÕES
+      ========================================== -->
+
+      <section
+        class="caixa-admin"
+        style="margin: 30px"
+      >
+        <!-- TOPO -->
+
+        <div class="topo-devolucoes">
+          <div>
+            <h1>
+              Devoluções
+            </h1>
+
+            <p>
+              Gerencie as devoluções de livros no sistema.
+            </p>
+          </div>
+        </div>
+
+        <!-- =========================================
+             PESQUISA
+        ========================================== -->
+
+        <form
+          class="pesquisa-livros"
+          id="formPesquisaDevolucaoAdmin"
+        >
+          <label
+            for="pesquisaDevolucaoAdmin"
+            class="label-oculta"
+          >
+            Buscar devoluções
+          </label>
+
+          <input
+            type="text"
+            id="pesquisaDevolucaoAdmin"
+            placeholder="Pesquisar por usuário ou livro"
+          />
+
+          <button
+            type="submit"
+            class="botao-principal"
+          >
+            Pesquisar
+          </button>
+        </form>
+
+        <!-- =========================================
+             TABELA
+        ========================================== -->
+
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Livro</th>
+                <th>Data do Empréstimo</th>
+                <th>Previsão de Devolução</th>
+                <th>Data da Devolução</th>
+                <th>Status</th>
+                <th>Multa</th>
+               
+              </tr>
+            </thead>
+
+            <tbody id="corpoTabelaDevolucoesAdmin">
+           
+            </tbody>
+          </table>
+        </div>
+
+        <!-- =========================================
+             PAGINAÇÃO
+        ========================================== -->
+
+        <div class="rodape-tabela">
+          <p id="textoPaginacaoDevolucoesAdmin">
+            Mostrando 0 devoluções
+          </p>
+
+          <div
+            class="paginacao"
+            id="paginacaoDevolucoesAdmin"
+          >
+           
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

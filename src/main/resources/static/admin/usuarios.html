@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Usuários - Biblioteca</title>
+
+    <!-- ÍCONE DA ABA -->
+    <link rel="icon" type="image/png" href="/img/icon.png" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+
+<!--MENU LATERAL ADMIN -->
+
+<aside class="menu-admin">
+
+    <div class="logo-admin">
+        <h1>📖 Biblioteca</h1>
+        <span>ONLINE</span>
+    </div>
+
+    <nav class="menu-links">
+
+        <a href="/admin">
+            🏠 Início
+        </a>
+
+        <a href="/admin/usuarios" class="ativo">
+            👥 Usuários
+        </a>
+
+        <a href="/admin/livros">
+            📚 Livros
+        </a>
+
+        <a href="/admin/emprestimos">
+            📖 Empréstimos
+        </a>
+
+        <a href="/admin/devolucoes">
+            ↩️ Devoluções
+        </a>
+
+        <a href="/admin/relatorios">
+            📊 Relatórios
+        </a>
+
+        <a href="/admin/configurações.html"> ⚙️ Configurações </a>
+
+    </nav>
+
+
+    <!-- =
+         ADMINISTRADOR -->
+
+    <div class="admin-rodape">
+
+        <div class="admin-info">
+
+            <div class="avatar-admin">
+                👤
+            </div>
+
+            <div>
+
+                <strong id="nomeAdminMenu">
+                    Administrador
+                </strong>
+
+                <span id="emailAdminMenu">
+              admin@biblioteca.com
+            </span>
+            </div>
+
+        </div>
+        <a href="/" class="botao-sair">
+            🚪 Sair
+        </a>
+    </div>
+
+</aside>
+
+<!--  CONTEÚDO PRINCIPAL -->
+
+<main class="painel-admin">
+    <!-- CABEÇALHO-->
+
+    <header class="topo-admin">
+        <div class="titulo-topo">
+            <button
+                    type="button"
+                    class="botao-menu"
+                    aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+            <h2>Usuários</h2>
+
+        </div>
+
+        <div class="usuario-topo">
+            <button
+                    type="button"
+                    class="botao-notificacao"
+                    aria-label="Notificações"
+            >
+                🔔
+            </button>
+            <span id="usuarioLogado">
+            Administrador
+          </span>
+        </div>
+    </header>
+
+    <!--  ÁREA DOS USUÁRIOS-->
+
+    <section
+            class="caixa-admin"
+            style="margin: 60px 30px 30px"
+    >
+
+        <!-- TOPO -->
+        <div class="topo-usuarios">
+
+            <div>
+                <h1>
+                    Usuários
+                </h1>
+                <p>
+                    Gerencie os usuários cadastrados no sistema.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PESQUISA -->
+        <form
+                class="pesquisa-livros"
+                id="formPesquisaUsuario"
+        >
+
+            <label
+                    for="pesquisaUsuario"
+                    class="label-oculta"
+            >
+                Buscar usuário
+            </label>
+
+            <input
+                    type="text"
+                    id="pesquisaUsuario"
+                    placeholder="Pesquisar por nome, CPF ou e-mail"
+            />
+
+            <button
+                    type="submit"
+                    class="botao-principal"
+            >
+                Pesquisar
+            </button>
+        </form>
+
+        <!-- TABELA-->
+        <div class="tabela-responsiva">
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Perfil</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="corpoTabelaUsuarios">
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!--  PAGINAÇÃO -->
+        <div class="rodape-tabela">
+
+            <p id="textoPaginacaoUsuarios">
+                Mostrando 0 usuários
+            </p>
+
+
+            <div
+                    class="paginacao"
+                    id="paginacaoUsuarios"
+            >
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8"/>
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Configurações - Biblioteca</title>
+
+    <link
+            rel="icon"
+            type="image/png"
+            href="../img/icon.png"
+    />
+
+    <link
+            rel="stylesheet"
+            href="../css/style.css"
+    />
+</head>
+
+<body>
+
+<!-- MENU LATERAL ADMIN -->
+
+<aside class="menu-admin">
+
+    <div class="logo-admin">
+
+        <h1>
+            📖 Biblioteca
+        </h1>
+
+        <span>
+            ONLINE
+        </span>
+
+    </div>
+
+
+    <nav class="menu-links">
+
+        <a href="/admin">
+            🏠 Início
+        </a>
+
+        <a href="/admin/usuarios.html">
+            👥 Usuários
+        </a>
+
+        <a href="/admin/livros">
+            📚 Livros
+        </a>
+
+        <a href="/admin/emprestimos.html">
+            📖 Empréstimos
+        </a>
+
+        <a href="/admin/devolucoes.html">
+            ↩️ Devoluções
+        </a>
+
+        <a href="/admin/relatorio.html">
+            📊 Relatórios
+        </a>
+
+        <a
+                href="/admin/configurações.html"
+                class="ativo"
+        >
+            ⚙️ Configurações
+        </a>
+
+    </nav>
+
+
+    <!-- ADMINISTRADOR -->
+
+    <div class="admin-rodape">
+
+        <div class="admin-info">
+
+            <div class="avatar-admin">
+                👤
+            </div>
+
+            <div>
+
+                <strong id="nomeAdminMenu">
+                    Administrador
+                </strong>
+
+                <span id="emailAdminMenu">
+                    admin@biblioteca.com
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <a
+                href="/"
+                class="botao-sair"
+        >
+            🚪 Sair
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- CONTEÚDO PRINCIPAL -->
+
+<main class="painel-admin">
+
+
+    <!-- CABEÇALHO -->
+
+    <header class="topo-admin">
+
+        <div class="titulo-topo">
+
+            <button
+                    type="button"
+                    class="botao-menu"
+                    aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+            <h2>
+                Configurações
+            </h2>
+
+        </div>
+
+
+        <div class="usuario-topo">
+
+            <button
+                    type="button"
+                    class="botao-notificacao"
+                    aria-label="Notificações"
+            >
+                🔔
+            </button>
+
+            <span id="usuarioLogado">
+                Administrador
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- BANNER -->
+
+    <section class="banner-admin">
+
+        <div class="banner-texto">
+
+            <div class="icone-banner">
+                ⚙️
+            </div>
+
+            <div>
+
+                <h1>
+                    Configurações do Sistema
+                </h1>
+
+                <p>
+                    Gerencie as preferências e regras da biblioteca.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="banner-ilustracao">
+            🖥️ ⚙️
+        </div>
+
+    </section>
+
+
+    <!-- ABAS -->
+
+    <section class="config-abas">
+
+        <button
+                type="button"
+                class="config-aba ativa"
+                data-config="geral"
+        >
+            Geral
+        </button>
+
+
+        <button
+                type="button"
+                class="config-aba"
+                data-config="emprestimos"
+        >
+            Empréstimos
+        </button>
+
+
+        <button
+                type="button"
+                class="config-aba"
+                data-config="multas"
+        >
+            Multas
+        </button>
+
+    </section>
+
+
+    <!-- CONTEÚDO DAS CONFIGURAÇÕES -->
+
+    <section class="config-area">
+
+
+        <!-- GERAL -->
+
+        <article
+                class="caixa-admin config-caixa config-conteudo ativo"
+                data-config-conteudo="geral"
+        >
+
+            <div class="titulo-caixa">
+
+                <div>
+
+                    <h2>
+                        Configurações Gerais
+                    </h2>
+
+                    <p>
+                        Defina as preferências gerais de funcionamento do sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="formConfiguracaoGeral">
+
+
+                <!-- NOME DO SISTEMA -->
+
+                <div class="campo">
+
+                    <label for="nomeSistema">
+                        Nome do Sistema
+                    </label>
+
+                    <input
+                            type="text"
+                            id="nomeSistema"
+                            placeholder="Biblioteca Online"
+                            value="Biblioteca Online"
+                    />
+
+                    <small>
+                        Nome exibido nas páginas do sistema.
+                    </small>
+
+                </div>
+
+
+                <!-- CADASTRO DE USUÁRIOS -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Permitir cadastro de novos usuários
+                        </strong>
+
+                        <span>
+                            Permite que novos usuários criem uma conta no sistema.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="permitirCadastroUsuarios"
+                                checked
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- CPF OBRIGATÓRIO -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Exigir CPF no cadastro
+                        </strong>
+
+                        <span>
+                            Torna obrigatório informar o CPF ao criar uma conta.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="exigirCpf"
+                                checked
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- ALTERAR PERFIL -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Permitir alteração do perfil
+                        </strong>
+
+                        <span>
+                            Permite que o usuário altere seus dados pessoais.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="permitirEditarPerfil"
+                                checked
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- LIVROS INDISPONÍVEIS -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Mostrar livros indisponíveis
+                        </strong>
+
+                        <span>
+                            Exibe no catálogo os livros que não possuem exemplares disponíveis.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="mostrarLivrosIndisponiveis"
+                                checked
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- ITENS POR PÁGINA -->
+
+                <div class="campo">
+
+                    <label for="itensPorPagina">
+                        Itens exibidos por página
+                    </label>
+
+                    <select id="itensPorPagina">
+
+                        <option value="5">
+                            5 itens
+                        </option>
+
+                        <option
+                                value="10"
+                                selected
+                        >
+                            10 itens
+                        </option>
+
+                        <option value="20">
+                            20 itens
+                        </option>
+
+                        <option value="30">
+                            30 itens
+                        </option>
+
+                    </select>
+
+                    <small>
+                        Define quantos registros serão exibidos nas tabelas.
+                    </small>
+
+                </div>
+
+
+                <!-- AVISO -->
+
+                <div class="campo">
+
+                    <label for="mensagemSistema">
+                        Aviso aos usuários
+                    </label>
+
+                    <textarea
+                            id="mensagemSistema"
+                            rows="4"
+                            placeholder="Digite uma mensagem ou aviso para os usuários..."
+                    ></textarea>
+
+                    <small>
+                        Mensagem que poderá ser exibida aos usuários do sistema.
+                    </small>
+
+                </div>
+
+
+                <!-- BOTÃO -->
+
+                <div class="config-acoes">
+
+                    <button
+                            type="submit"
+                            class="botao-principal"
+                    >
+                        💾 Salvar Alterações
+                    </button>
+
+                </div>
+
+            </form>
+
+        </article>
+
+
+        <!-- EMPRÉSTIMOS -->
+
+        <article
+                class="caixa-admin config-caixa config-conteudo"
+                data-config-conteudo="emprestimos"
+        >
+
+            <div class="titulo-caixa">
+
+                <div>
+
+                    <h2>
+                        Configurações de Empréstimo
+                    </h2>
+
+                    <p>
+                        Defina as regras para empréstimos de livros.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="formConfiguracaoEmprestimo">
+
+
+                <div class="config-linha">
+
+
+                    <div class="campo">
+
+                        <label for="prazoEmprestimo">
+                            Prazo padrão do empréstimo
+                        </label>
+
+                        <input
+                                type="number"
+                                id="prazoEmprestimo"
+                                min="1"
+                                placeholder="7"
+                        />
+
+                        <small>
+                            Quantidade de dias para devolver o livro.
+                        </small>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="limiteLivrosUsuario">
+                            Limite de livros por usuário
+                        </label>
+
+                        <input
+                                type="number"
+                                id="limiteLivrosUsuario"
+                                min="1"
+                                placeholder="3"
+                        />
+
+                        <small>
+                            Quantidade máxima de empréstimos ativos.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RENOVAÇÃO -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Permitir renovação
+                        </strong>
+
+                        <span>
+                            Permite renovar um empréstimo ainda ativo.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="permitirRenovacao"
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- TOLERÂNCIA -->
+
+                <div class="campo">
+
+                    <label for="diasTolerancia">
+                        Dias de tolerância
+                    </label>
+
+                    <input
+                            type="number"
+                            id="diasTolerancia"
+                            min="0"
+                            placeholder="0"
+                    />
+
+                    <small>
+                        Dias extras antes da cobrança de multa.
+                    </small>
+
+                </div>
+
+
+                <div class="config-acoes">
+
+                    <button
+                            type="submit"
+                            class="botao-principal"
+                    >
+                        💾 Salvar Alterações
+                    </button>
+
+                </div>
+
+            </form>
+
+        </article>
+
+
+        <!-- MULTAS -->
+
+        <article
+                class="caixa-admin config-caixa config-conteudo"
+                data-config-conteudo="multas"
+        >
+
+            <div class="titulo-caixa">
+
+                <div>
+
+                    <h2>
+                        Configurações de Multa
+                    </h2>
+
+                    <p>
+                        Defina as regras para atrasos e bloqueios.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="formConfiguracaoMulta">
+
+
+                <!-- VALOR MULTA -->
+
+                <div class="campo">
+
+                    <label for="valorMultaDia">
+                        Valor da multa por dia (R$)
+                    </label>
+
+                    <input
+                            type="number"
+                            id="valorMultaDia"
+                            min="0"
+                            step="0.01"
+                            placeholder="2,00"
+                    />
+
+                    <small>
+                        Valor cobrado por cada dia de atraso.
+                    </small>
+
+                </div>
+
+
+                <!-- MULTA AUTOMÁTICA -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Gerar multa automaticamente
+                        </strong>
+
+                        <span>
+                            O sistema cria a multa quando o prazo for ultrapassado.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="multaAutomatica"
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- BLOQUEIO -->
+
+                <div class="config-switch-box">
+
+                    <div>
+
+                        <strong>
+                            Bloquear novos empréstimos
+                        </strong>
+
+                        <span>
+                            Impede novos empréstimos enquanto existir multa pendente.
+                        </span>
+
+                    </div>
+
+
+                    <label class="switch-config">
+
+                        <input
+                                type="checkbox"
+                                id="bloquearUsuarioMulta"
+                        />
+
+                        <span class="slider-config"></span>
+
+                    </label>
+                </div>
+
+                <div class="config-acoes">
+                    <button
+                            type="submit"
+                            class="botao-principal"
+                    >
+                        💾 Salvar Alterações
+                    </button>
+                </div>
+            </form>
+        </article>
+    </section>
+</main>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

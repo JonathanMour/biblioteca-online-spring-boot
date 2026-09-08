@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Novo Livro - Biblioteca</title>
+
+    <link rel="icon" type="image/png" href="../img/icon.png" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- MENU LATERAL ADMIN -->
+
+    <aside class="menu-admin">
+      <div class="logo-admin">
+        <h1>📘 BIBLIOTECA</h1>
+        <span>ONLINE</span>
+      </div>
+
+      <nav class="menu-links">
+        <a href="/admin">
+          🏠 Início
+        </a>
+
+        <a href="/admin/usuarios.html">
+          👥 Usuários
+        </a>
+
+        <a href="/admin/novo-livro.html" class="ativo">
+          📚 Livros
+        </a>
+
+        <a href="/admin/emprestimos.html">
+          📖 Empréstimos
+        </a>
+
+        <a href="/admin/devolucoes.html">
+          ↩️ Devoluções
+        </a>
+
+        <a href="/admin/relatorios.html">
+          📊 Relatórios
+        </a>
+
+        <a href="configurações.html">
+          ⚙️ Configurações
+        </a>
+      </nav>
+
+      <!-- ADMIN -->
+
+      <div class="admin-rodape">
+        <div class="admin-info">
+          <div class="avatar-admin">
+            👤
+          </div>
+
+          <div>
+            <strong id="nomeAdminMenu">
+              Administrador
+            </strong>
+
+            <span>
+              admin@biblioteca.com
+            </span>
+          </div>
+        </div>
+
+          <a href="/" class="botao-sair">
+              🚪 Sair
+          </a>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL-->
+
+    <main class="painel-admin">
+
+      <!-- CABEÇALHO  -->
+
+      <header class="topo-admin">
+        <div class="titulo-topo">
+          <button
+            type="button"
+            class="botao-menu"
+          >
+            ☰
+          </button>
+
+          <h2>
+            Novo Livro
+          </h2>
+        </div>
+
+        <div class="usuario-topo">
+          <button
+            type="button"
+            class="botao-notificacao"
+          >
+            🔔
+          </button>
+
+          <span id="usuarioLogado">
+            Administrador
+          </span>
+        </div>
+      </header>
+
+      <!--  TOPO DA PÁGINA -->
+      <section class="novo-livro-topo">
+        <div>
+          <h1>
+            Novo Livro
+          </h1>
+
+          <p>
+            Preencha as informações para cadastrar
+            um novo livro na biblioteca.
+          </p>
+        </div>
+
+        <a
+          href="/admin/livros.html"
+          class="botao-voltar-livros"
+        >
+          ← Voltar para Lista
+        </a>
+
+      </section>
+
+      <!-- FORMULÁRIO -->
+
+      <section class="caixa-admin novo-livro-caixa">
+
+        <div class="novo-livro-titulo">
+          <span>
+            📖
+          </span>
+
+          <h2>
+            Informações do Livro
+          </h2>
+        </div>
+
+        <form id="formNovoLivro">
+
+          <div class="novo-livro-grade">
+            <!-- TÍTULO -->
+            <div class="campo-novo-livro">
+              <label for="tituloLivro">
+                Título do Livro *
+              </label>
+
+              <input
+                type="text"
+                id="tituloLivro"
+                placeholder="Digite o título do livro"
+                required
+              />
+            </div>
+
+            <!-- AUTOR -->
+
+            <div class="campo-novo-livro">
+              <label for="autorLivro">
+                Autor *
+              </label>
+              <input
+                type="text"
+                id="autorLivro"
+                placeholder="Digite o nome do autor"
+                required
+              />
+            </div>
+
+            <!-- GÊNERO -->
+            <div class="campo-novo-livro">
+              <label for="generoLivro">
+                Gênero
+              </label>
+              <select id="generoLivro">
+                <option value="">
+                  Selecione o gênero
+                </option>
+
+                <option value="Romance">
+                  Romance
+                </option>
+
+                <option value="Fantasia">
+                  Fantasia
+                </option>
+
+                <option value="Ficção">
+                  Ficção
+                </option>
+
+                <option value="Terror">
+                  Terror
+                </option>
+
+                <option value="Suspense">
+                  Suspense
+                </option>
+
+                <option value="Aventura">
+                  Aventura
+                </option>
+
+                <option value="Biografia">
+                  Biografia
+                </option>
+
+                <option value="Historia">
+                  História
+                </option>
+
+                <option value="Educacao">
+                  Educação
+                </option>
+
+                <option value="Outros">
+                  Outros
+                </option>
+              </select>
+            </div>
+
+            <!-- EDITORA -->
+
+            <div class="campo-novo-livro">
+              <label for="editoraLivro">
+                Editora
+              </label>
+
+              <input
+                type="text"
+                id="editoraLivro"
+                placeholder="Digite o nome da editora"
+              />
+            </div>
+
+            <!-- ISBN -->
+
+            <div class="campo-novo-livro">
+              <label for="isbnLivro">
+                ISBN *
+              </label>
+
+              <input
+                type="text"
+                id="isbnLivro"
+                placeholder="Ex: 9788535902775"
+                required
+              />
+
+              <small>
+                O ISBN poderá ser usado depois
+                para buscar automaticamente os dados
+                e a capa do livro.
+              </small>
+            </div>
+
+            <!-- ANO -->
+
+            <div class="campo-novo-livro">
+              <label for="anoPublicacaoLivro">
+                Ano de Publicação
+              </label>
+
+              <input
+                type="number"
+                id="anoPublicacaoLivro"
+                placeholder="Ex: 2026"
+                min="1000"
+                max="9999"
+              />
+            </div>
+
+            <!-- QUANTIDADE -->
+
+            <div class="campo-novo-livro">
+              <label for="quantidadeLivro">
+                Quantidade em Estoque *
+              </label>
+
+              <input
+                type="number"
+                id="quantidadeLivro"
+                placeholder="Ex: 1"
+                min="1"
+                required
+              />
+            </div>
+
+            <!-- LOCALIZAÇÃO -->
+
+            <div class="campo-novo-livro">
+              <label for="localizacaoLivro">
+                Localização
+              </label>
+
+              <input
+                type="text"
+                id="localizacaoLivro"
+                placeholder="Ex: Estante 1 - Prateleira 2"
+              />
+            </div>
+
+          </div>
+
+          <!-- DESCRIÇÃO -->
+
+          <div class="campo-novo-livro campo-novo-livro-grande">
+            <label for="descricaoLivro">
+              Descrição
+            </label>
+
+            <textarea
+              id="descricaoLivro"
+              rows="5"
+              placeholder="Digite uma descrição sobre o livro..."
+            ></textarea>
+          </div>
+
+          <!-- AÇÕES -->
+
+          <div class="novo-livro-acoes">
+
+            <button
+              type="reset"
+              class="botao-limpar-livro"
+            >
+              Limpar
+            </button>
+
+            <button
+              type="submit"
+              class="botao-principal"
+            >
+              💾 Cadastrar Livro
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+    </main>
+
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

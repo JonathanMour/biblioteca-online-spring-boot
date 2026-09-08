@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: jonathan-spring-boot-bibilioteca
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/biblioteca_db
+    username: root
+    password: 265478
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

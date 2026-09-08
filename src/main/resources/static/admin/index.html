@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Painel de Controle - Biblioteca</title>
+
+    <link rel="icon" type="image/png" href="/img/icon.png" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+<!-- ========================================
+     MENU LATERAL
+========================================= -->
+
+<aside class="menu-admin">
+    <div class="logo-admin">
+        <h1>📖 Biblioteca</h1>
+
+        <span>ONLINE</span>
+    </div>
+
+    <nav class="menu-links">
+        <a href="/admin">🏠 Início</a>
+
+        <a href="/admin/usuarios">👥 Usuários</a>
+
+        <a href="/admin/livros">📚 Livros</a>
+
+        <a href="/admin/emprestimos">📖 Empréstimos</a>
+
+        <a href="/admin/devolucoes">↩️ Devoluções</a>
+
+        <a href="/admin/relatorios">📊 Relatórios</a>
+
+        <a href="/admin/configurações.html"> ⚙️ Configurações </a>
+    </nav>
+
+    <!--  ADMINISTRADOR-->
+
+    <div class="admin-rodape">
+        <div class="admin-info">
+            <div class="avatar-admin">👤</div>
+
+            <div>
+                <strong id="nomeAdminMenu">
+                    Administrador
+                </strong>
+
+                <span id="emailAdminMenu">
+              admin@biblioteca.com
+            </span>
+            </div>
+        </div>
+
+        <a href="/" class="botao-sair">
+            🚪 Sair
+        </a>
+    </div>
+</aside>
+
+<!--CONTEÚDO PRINCIPAL-->
+
+<main class="painel-admin">
+
+    <!-- CABEÇALHO -->
+
+    <header class="topo-admin">
+        <div class="titulo-topo">
+
+
+            <h2>Painel de Controle</h2>
+        </div>
+
+        <div class="usuario-topo">
+            <button
+                    type="button"
+                    class="botao-notificacao"
+                    aria-label="Notificações"
+            >
+                🔔
+            </button>
+            <span id="usuarioLogado">
+            Administrador
+          </span>
+        </div>
+    </header>
+
+    <!-- BOAS-VINDAS-->
+
+    <section class="banner-admin">
+        <div class="banner-texto">
+            <div class="icone-banner">📖</div>
+
+            <div>
+                <h1>
+                    Bem-vindo,
+
+                    <span id="nomeBoasVindas">
+                Administrador
+              </span>!
+                </h1>
+
+                <p>
+                    Gerencie os dados da biblioteca de forma rápida e eficiente.
+                </p>
+            </div>
+        </div>
+
+        <div class="banner-ilustracao">
+            📚 🌱
+        </div>
+    </section>
+
+    <!--CARDS -->
+    <section class="cards-admin">
+
+        <!-- USUÁRIOS -->
+
+        <article class="card-admin card-usuarios">
+            <div class="icone-card">
+                👥
+            </div>
+
+            <div>
+                <strong id="totalUsuariosDashboard">0</strong>
+
+                <span>
+              Usuários cadastrados
+            </span>
+
+                <a href="/admin/usuarios">
+                    Ver usuários →
+                </a>
+            </div>
+        </article>
+
+        <!-- LIVROS -->
+
+        <article class="card-admin card-livros">
+            <div class="icone-card">
+                📚
+            </div>
+
+            <div>
+                <strong id="totalLivrosDashboard">0</strong>
+                <span>
+              Livros cadastrados
+            </span>
+
+                <a href="/admin/livros">
+                    Ver livros →
+                </a>
+            </div>
+        </article>
+        <!-- EMPRÉSTIMOS -->
+
+        <article class="card-admin card-emprestimos">
+            <div class="icone-card">
+                🔄
+            </div>
+
+            <div>
+                <strong id="totalEmprestimosAtivosAdmin">
+                    0
+                </strong>
+
+                <span>
+              Empréstimos ativos
+            </span>
+
+                <a href="/admin/emprestimos">
+                    Ver empréstimos →
+                </a>
+            </div>
+        </article>
+
+        <!-- DEVOLUÇÕES -->
+        <article class="card-admin card-devolucoes">
+            <dv class="icone-card">
+                📅
+            </dv>
+            <div>
+                <strong id="totalDevolucoesPendentesAdmin">
+                    0
+                </strong>
+                <span>
+            Devoluções pendentes
+        </span>
+                <a href="/admin/devolucoes">
+                    Ver devoluções →
+                </a>
+            </div>
+        </article>
+    </section>
+
+    <!--  EMPRÉSTIMOS + DEVOLUÇÕES-->
+
+    <section class="grade-admin">
+
+        <!-- EMPRÉSTIMOS RECENTES-->
+
+        <article class="caixa-admin">
+            <div class="titulo-caixa">
+                <h2>
+                    Empréstimos recentes
+                </h2>
+
+                <a href="/admin/emprestimos">
+                    Ver todos
+                </a>
+            </div>
+
+            <div class="tabela-responsiva">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuário</th>
+                        <th>Livro</th>
+                        <th>Data do Empréstimo</th>
+                        <th>Devolução Prevista</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="corpoRelatorioEmprestimosRecentes">
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!--DEVOLUÇÕES PENDENTES-->
+
+        <article class="caixa-admin">
+            <div class="titulo-caixa">
+                <h2>
+                    Devoluções pendentes
+                </h2>
+
+                <a href="/admin/devolucoes">
+                    Ver todos
+                </a>
+            </div>
+
+            <div
+                    class="lista-devolucoes"
+                    id="listaDevolucoesPendentesAdmin"
+            >
+            </div>
+        </article>
+
+    </section>
+
+    <!-- AÇÕES RÁPIDAS-->
+
+    <section class="acoes-admin">
+        <h2>
+            Ações rápidas
+        </h2>
+
+        <div class="botoes-acoes">
+
+
+            <!-- REGISTRAR DEVOLUÇÃO -->
+
+            <a
+                    href="/admin/devolucoes"
+                    class="acao-rapida"
+            >
+                🔄 Registrar Devolução
+            </a>
+
+            <!-- USUÁRIOS -->
+
+            <a
+                    href="/admin/usuarios"
+                    class="acao-rapida"
+            >
+                👤 Usuários
+            </a>
+
+            <!-- CADASTRAR NOVO LIVRO -->
+
+            <a
+                    href="/admin/novo-livro"
+                    class="acao-rapida"
+            >
+                📚 Cadastrar Livro
+            </a>
+
+            <!-- RELATÓRIOS -->
+
+            <a
+                    href="/admin/relatorios"
+                    class="acao-rapida"
+            >
+                📊 Ver Relatórios
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<script src="/js/script.js"></script>
+
+
+</body>
+</html>
