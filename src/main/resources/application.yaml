@@ -3,9 +3,9 @@ spring:
     name: jonathan-spring-boot-bibilioteca
 
   datasource:
-    url: jdbc:mysql://localhost:3306/biblioteca_db
-    username: root
-    password: 265478
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   jpa:
     hibernate:
