@@ -1102,7 +1102,7 @@ if (formCadastro) {
 
         console.log("Enviando usuário:", usuario);
 
-        fetch("http://localhost:8080/usuarios", {
+        fetch("/usuarios", {
 
             method: "POST",
 
