@@ -3226,7 +3226,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function carregarResumoRelatorio() {
 
-    fetch("http://localhost:8080/relatorios/resumo")
+    fetch("/relatorios/resumo")
 
         .then(function (response) {
 
@@ -4078,7 +4078,7 @@ let idConfiguracaoAtual = null;
 // CARREGAR CONFIGURAÇÃO DO BANCO
 
 function carregarConfiguracaoSistema() {
-    fetch("http://localhost:8080/configuracoes")
+    fetch("/configuracoes")
         .then(function (response) {
             if (!response.ok) {
                 throw new Error("Erro ao carregar configurações.");
@@ -4204,7 +4204,7 @@ function pegarDadosConfiguracao() {
 // SALVAR / ATUALIZAR CONFIGURAÇÃO
 function salvarConfiguracaoSistema() {
     const configuracao = pegarDadosConfiguracao();
-    let url = "http://localhost:8080/configuracoes";
+    let url = "/configuracoes";
     let metodo = "POST";
 
 
