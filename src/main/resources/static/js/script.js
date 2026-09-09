@@ -1997,7 +1997,7 @@ function mostrarLivrosHome() {
 
           <span>
 
-            ${Number(livro.disponiveis || 0) > 0
+          ${Number(livro.quantidadeDisponivel || 0) > 0
             ? "Disponível"
             : "Indisponível"}
           </span>
