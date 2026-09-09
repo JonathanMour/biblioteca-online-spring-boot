@@ -758,21 +758,6 @@ if (paginaUsuario) {
                 }
             }
 
-
-            console.log(
-                "HOME CARREGADA"
-            );
-
-            console.log(
-                "EMPRÉSTIMOS DO USUÁRIO:",
-                emprestimosUsuario
-            );
-
-            console.log(
-                "LIVROS:",
-                livros
-            );
-
         })
 
         .catch(function (erro) {
@@ -807,10 +792,6 @@ if (corpoTabelaLivrosUsuario) {
 
         .then(function (livros) {
 
-            console.log(
-                "LIVROS CARREGADOS:",
-                livros
-            );
 
             /* LIVROS DO BACKEND PARA A PESQUISA */
 
@@ -1020,7 +1001,7 @@ if (formNovoLivro) {
 
                 alert("Livro cadastrado com sucesso!");
 
-                console.log("Livro cadastrado:", livroSalvo);
+
 
                 formNovoLivro.reset();
 
@@ -1099,9 +1080,6 @@ if (formCadastro) {
             senha: senha
 
         };
-
-        console.log("Enviando usuário:", usuario);
-
         fetch("/usuarios", {
 
             method: "POST",
@@ -1136,7 +1114,7 @@ if (formCadastro) {
 
             .then(function (data) {
 
-                console.log("Usuário cadastrado:", data);
+
 
                 alert("Conta criada com sucesso!");
 
@@ -1665,9 +1643,6 @@ const livrosPorPagina = 5;
 /* MOSTRAR CATÁLOGO */
 
 function mostrarLivrosCatalogo() {
-
-    console.log("MOSTRAR CATÁLOGO EXECUTOU");
-
     if (!corpoTabelaLivros) {
         return;
     }
@@ -1705,7 +1680,7 @@ function mostrarLivrosCatalogo() {
 
     livrosPagina.forEach(function (livro) {
 
-        console.log("LIVRO:", livro);
+
 
         const linha =
             document.createElement("tr");
@@ -2297,16 +2272,6 @@ if (pesquisaTopoPublica) {
                         }
                     );
 
-
-                console.log(
-                    "USUÁRIO LOGADO:",
-                    usuario
-                );
-
-                console.log(
-                    "EMPRÉSTIMOS DO USUÁRIO:",
-                    emprestimosUsuario
-                );
 
 
                 atualizarCards();
@@ -3254,7 +3219,6 @@ function carregarResumoRelatorio() {
 
         .then(function (data) {
 
-            console.log("Relatório recebido:", data);
 
             const totalUsuarios = document.getElementById("relatorioTotalUsuarios");
             const totalLivros = document.getElementById("relatorioTotalLivros");
@@ -4028,7 +3992,6 @@ function carregarResumoRelatorio() {
 
             event.preventDefault();
 
-            console.log("GERANDO RELATÓRIO");
 
             gerarRelatorio();
         });
@@ -4102,7 +4065,6 @@ function carregarConfiguracaoSistema() {
         })
 
         .then(function (data) {
-            console.log("Configurações recebidas:", data);
 
             if (Array.isArray(data) && data.length > 0) {
                 preencherConfiguracao(data[0]);
@@ -4246,7 +4208,6 @@ function salvarConfiguracaoSistema() {
 
         })
         .then(function (data) {
-            console.log("Configuração salva:", data);
             idConfiguracaoAtual = data.id;
             alert("Configurações salvas com sucesso!");
 
@@ -4314,12 +4275,6 @@ fetch("/usuarios/me")
         usuarioAtual = usuario;
 
         carregarFotoPerfil();
-
-        console.log(
-            "USUÁRIO RECEBIDO:",
-            usuario
-        );
-
 
         const nomeUsuarioMenu =
             document.getElementById(
@@ -4523,11 +4478,6 @@ function carregarUsuariosAdmin() {
 
         .then(function (usuarios) {
 
-            console.log(
-                "USUÁRIOS RECEBIDOS:",
-                usuarios
-            );
-
             listaUsuarios = usuarios;
 
             mostrarUsuarios(listaUsuarios);
@@ -4728,11 +4678,6 @@ function carregarLivrosAdmin() {
 
         .then(function (livros) {
 
-            console.log(
-                "LIVROS RECEBIDOS:",
-                livros
-            );
-
             listaLivrosAdmin = livros;
 
             mostrarLivrosAdmin(
@@ -4900,11 +4845,6 @@ if (usuarioEmprestimo) {
 
             .then(function (livros) {
 
-                console.log(
-                    "LIVROS DO EMPRÉSTIMO:",
-                    livros
-                );
-
                 livroEmprestimo.innerHTML = `
                 <option value="">
                     Selecione um livro
@@ -5046,8 +4986,6 @@ if (usuarioEmprestimo) {
 }
 (function () {
 
-    console.log("1 - ENTROU NAS DEVOLUÇÕES");
-
     const corpoTabela =
         document.getElementById("corpoTabelaDevolucoes");
 
@@ -5072,13 +5010,9 @@ if (usuarioEmprestimo) {
     const totalHistorico =
         document.getElementById("totalHistoricoDevolucoes");
 
-    console.log("2 - TABELA:", corpoTabela);
-
     if (!corpoTabela) {
-        console.log("3 - NÃO ACHOU A TABELA");
         return;
     }
-    console.log("3 - ACHOU A TABELA");
     let emprestimosUsuario = [];
     let filtro = "";
     let abaAtual = "devolvidos";
@@ -5931,11 +5865,6 @@ if (usuarioEmprestimo) {
 
         .then(function (dados) {
 
-            console.log(
-                "EMPRÉSTIMOS ADMIN:",
-                dados
-            );
-
             emprestimos =
                 dados;
 
@@ -6255,11 +6184,6 @@ if (usuarioEmprestimo) {
 
         .then(function (dados) {
 
-            console.log(
-                "DEVOLUÇÕES ADMIN:",
-                dados
-            );
-
             devolucoes =
                 dados.filter(
                     function (emprestimo) {
@@ -6382,10 +6306,7 @@ if (usuarioEmprestimo) {
                 mensagemSistema.value =
                     configuracao.mensagemSistema || "";
 
-                console.log(
-                    "CONFIGURAÇÃO CARREGADA:",
-                    configuracao
-                );
+
             })
 
             .catch(function (erro) {
@@ -6465,10 +6386,7 @@ if (usuarioEmprestimo) {
                     diasTolerancia.value =
                         configuracaoAtual.diasTolerancia ?? 0;
 
-                    console.log(
-                        "CONFIGURAÇÃO EMPRÉSTIMO CARREGADA:",
-                        configuracaoAtual
-                    );
+
                 })
 
                 .catch(function (erro) {
@@ -6542,10 +6460,6 @@ if (usuarioEmprestimo) {
 
                         configuracaoAtual = data;
 
-                        console.log(
-                            "CONFIGURAÇÃO EMPRÉSTIMO SALVA:",
-                            data
-                        );
 
                         alert(
                             "Configurações de empréstimo salvas com sucesso!"
@@ -6653,11 +6567,6 @@ if (usuarioEmprestimo) {
                 })
 
                 .then(function (data) {
-
-                    console.log(
-                        "CONFIGURAÇÃO SALVA:",
-                        data
-                    );
 
                     alert(
                         "Configurações salvas com sucesso!"
