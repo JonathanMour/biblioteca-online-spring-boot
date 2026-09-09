@@ -1979,7 +1979,22 @@ function mostrarLivrosHome() {
 
     lista.forEach(function (livro) {
         const card = document.createElement("article");
+
         card.className = "home-card-livros";
+
+        card.style.cursor = "pointer";
+
+        card.addEventListener("click", function () {
+
+            const confirmar = confirm(
+                "Para reservar este livro, você precisa ter uma conta. Deseja se cadastrar?"
+            );
+
+            if (confirmar) {
+                window.location.href = "/cadastro";
+            }
+        });
+
         card.innerHTML = `
 
         <div class="home-capa-livros">
