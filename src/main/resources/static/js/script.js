@@ -6972,7 +6972,7 @@ if (usuarioEmprestimo) {
             return response.json();
         })
         .then(function (livros) {
-
+            catalogoLivros = livros;
             listaLivros.innerHTML = "";
 
             if (!livros || livros.length === 0) {
