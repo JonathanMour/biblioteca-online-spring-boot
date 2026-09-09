@@ -1,6 +1,6 @@
 # 📚 Biblioteca Online
 
-Sistema Web para gerenciar uma biblioteca criado com Java e Spring Boot, visando a implementação prática de princípios de desenvolvimento Back-end, APIs REST,, autenticação, armazenamento de dados e ligação com um banco de dados.
+Sistema Web para gerenciar uma biblioteca criado com Java e Spring Boot, visando a implementação prática de princípios de desenvolvimento Back-end, APIs REST, autenticação, armazenamento de dados e ligação com um banco de dados.
 
 A plataforma conta com dois tipos de acesso: Usuário e Administrador, cada um com suas respectivas funções.
 
