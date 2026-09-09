@@ -252,9 +252,9 @@ Durante o desenvolvimento deste projeto foram aplicados conceitos como:
 
 ## 👨‍💻 Autor
 
-**Jonathan Moura**
+**Desenvolvedor Java Júnior | Back-end**
 
-Estudante de Engenharia de Software voltado para desenvolvimento Back-end em Java.
+Focado no desenvolvimento Back-end com Java, Spring Boot, APIs REST e PostgreSQL.
 ### GitHub
 
 https://github.com/JonathanMour
